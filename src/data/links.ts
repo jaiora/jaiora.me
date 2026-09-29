@@ -86,6 +86,8 @@ export interface CityChat extends LinkItem {
   slug: string
   // Русское «в …» (предложный падеж); не задано — название несклоняемое, используем label
   whereRu?: string
+  // Острова — «на Пхукете», «на Бали»; по умолчанию «в»
+  onRu?: boolean
   extra?: CityExtra
   story?: CityStory
   status?: LocationStatus
@@ -95,7 +97,8 @@ export const itemText = (item: LinkItem, lang: Lang) => ({
   label: (lang === 'en' && item.en?.label) || item.label,
 })
 
-export const whereText = (city: CityChat, lang: Lang) => (lang === 'ru' ? (city.whereRu ?? city.label) : itemText(city, lang).label)
+// «в Бангкоке» / «на Пхукете» — для фраз вида «Jaiora в …»; в английском предлог не нужен
+export const whereText = (city: CityChat, lang: Lang) => (lang === 'ru' ? `${city.onRu ? 'на' : 'в'} ${city.whereRu ?? city.label}` : itemText(city, lang).label)
 
 export const CITY_CHATS: CityChat[] = [
   {
@@ -276,6 +279,7 @@ export const CITY_CHATS: CityChat[] = [
   },
   {
     slug: 'bali',
+    onRu: true,
     url: 'https://t.me/bali_digital_it',
     label: 'Бали',
     en: { label: 'Bali' },
@@ -337,6 +341,7 @@ export const CITY_CHATS: CityChat[] = [
   },
   {
     slug: 'phuket',
+    onRu: true,
     url: 'https://t.me/phuket_digital_it',
     label: 'Пхукет',
     en: { label: 'Phuket' },

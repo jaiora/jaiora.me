@@ -97,7 +97,7 @@ function weeklyMeetup(c: CityChat, lang: Lang, path: string): Node {
   return {
     '@type': 'Event',
     '@id': urlOf(path) + '#meetup',
-    name: lang === 'en' ? `Jaiora meetup in ${name}` : `Встреча Jaiora в ${whereText(c, 'ru')}`,
+    name: lang === 'en' ? `Jaiora meetup in ${name}` : `Встреча Jaiora ${whereText(c, 'ru')}`,
     description: JAIORA[lang].meet.text,
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
     eventStatus: 'https://schema.org/EventScheduled',
@@ -147,7 +147,7 @@ const CRUMB = {
 function cityDescription(c: CityChat, lang: Lang): string {
   const banner = c.story?.banner?.text[lang]
   if (lang === 'en') return `Jaiora in ${cityName(c, lang)}. ${banner ?? 'A networking community and meetups. Join the local chat and find the person you need.'}`
-  return `Jaiora в ${whereText(c, 'ru')}. ${banner ?? 'Сообщество нетворкинга и встречи вживую. Локальный чат и нужный человек — здесь.'}`
+  return `Jaiora ${whereText(c, 'ru')}. ${banner ?? 'Сообщество нетворкинга и встречи вживую. Локальный чат и нужный человек — здесь.'}`
 }
 
 const storyText = (c: CityChat, lang: Lang) => c.story?.paragraph[lang].map((p) => p.text).join('') ?? ''
@@ -193,7 +193,7 @@ export function allPages(): PageMeta[] {
   for (const c of CITY_CHATS) {
     add(`/location/${c.slug}`, (lang, path) => {
       const name = cityName(c, lang)
-      const title = lang === 'en' ? `IT community in ${name}: chat and meetups for tech people — Jaiora` : `IT-сообщество в ${whereText(c, 'ru')}: чат и встречи айтишников — Jaiora`
+      const title = lang === 'en' ? `IT community in ${name}: chat and meetups for tech people — Jaiora` : `IT-сообщество ${whereText(c, 'ru')}: чат и встречи айтишников — Jaiora`
       const description = cityDescription(c, lang)
       const story = storyText(c, lang)
       return {
