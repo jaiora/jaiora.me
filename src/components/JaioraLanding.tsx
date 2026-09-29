@@ -189,9 +189,19 @@ export default function JaioraLanding() {
 
       <section className="s-section">
         <h2 className="s-h2">{c.storyTitle}</h2>
+        <p className="s-lead">
+          {c.storyBy.lead}
+          <a href={c.storyBy.href} target="_blank" rel="noopener noreferrer">{c.storyBy.name}</a>
+          {c.storyBy.tail}
+        </p>
         <ol className="s-timeline">
           {c.story.map((s, i) => (
             <Fragment key={s.title}>
+              {s.group && (
+                <li className={`s-group ${PHASE_CLASS[storyPhase[i]]}`} aria-hidden="true">
+                  {s.group}
+                </li>
+              )}
               {s.phase && (
                 <li className={`s-phase ${PHASE_CLASS[storyPhase[i]]}`} aria-hidden="true">
                   {s.phase}

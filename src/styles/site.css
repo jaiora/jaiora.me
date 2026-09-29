@@ -258,9 +258,15 @@ a.s-pill-solid:hover, .s-pill-solid:hover { background: var(--accent); color: va
 .s-step-goal .s-step-name { color: var(--ph, var(--accent)); }
 .s-step-pre .s-step-text { opacity: 0.85; }
 .ph-me { --ph: var(--me, #e2551b); }
-.ph-together { --ph: #1f9d55; }
-.ph-people { --ph: #0e88a8; }
-.ph-jaiora { --ph: #3346a8; }
+/* До сообществ — оранжевый основателя; дальше одна зелёная шкала, темнеет по мере того, как сеть растёт */
+.ph-together { --ph: var(--status-stable); }
+.ph-people { --ph: #22763a; }
+.ph-jaiora { --ph: var(--status-autonomous); }
+/* Граница двух частей хроники: линия через всю ширину, вертикаль ленты здесь прерывается */
+.s-group { display: flex; align-items: center; gap: var(--sp-2); margin: 0 0 0 calc(-1 * var(--sp-4)); padding: var(--sp-2) 0 0; font-size: var(--t-small); font-weight: 800; letter-spacing: -0.01em; color: var(--ph, var(--ink)); }
+.s-group::after { content: ''; flex: 1; height: 1px; background: var(--ph, var(--line)); opacity: 0.4; }
+.s-group + .s-phase { padding-top: var(--sp-2); }
+.s-timeline > .s-group:not(:first-child) { margin-top: var(--sp-4); }
 
 /* ---------- 7. Блог ---------- */
 .s-article { display: flex; flex-direction: column; gap: var(--sp-4); }
@@ -277,6 +283,7 @@ a.s-pill-solid:hover, .s-pill-solid:hover { background: var(--accent); color: va
   .s-step::before { left: -24px; }
   .s-step::after, .s-phase::after { left: -20px; }
   .s-phase::before { left: -28px; }
+  .s-group { margin-left: calc(-1 * var(--sp-3)); }
 }
 
 @media (prefers-reduced-motion: reduce) {
