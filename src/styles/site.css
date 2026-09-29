@@ -1,0 +1,279 @@
+/* Дизайн-система страницы: цвета, шрифтовая шкала, отступы — токены на .site, ничего не подбирается «на глаз». */
+
+/* ---------- 1. Токены ---------- */
+.site {
+  --font: 'Manrope', 'Inter', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --t-label: 0.8rem;
+  --t-small: 0.95rem;
+  --t-body: 1.125rem;
+  --t-lead: 1.3rem;
+  --t-title: 1.5rem;
+  --t-h2: clamp(1.9rem, 4.6vw, 2.6rem);
+  --t-h1: clamp(2.6rem, 7vw, 4.4rem);
+  --lh-body: 1.65;
+
+  --sp-1: 8px;
+  --sp-2: 16px;
+  --sp-3: 24px;
+  --sp-4: 32px;
+  --sp-5: 48px;
+  --sp-section: 96px;
+
+  --col: 900px;
+  --head-col: 14rem;
+  --radius: 4px;
+  --radius-lg: 14px;
+
+  min-height: 100vh;
+  overflow-x: clip;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Светлая бумага, зелёный акцент снят с логотипа (тот же тон, что и у ссылки Jaiora на urvanov.com).
+   Оранжевый (--me) — цвет основателя в хронике. */
+.site-jaiora {
+  --bg: #f6f3ec;
+  --surface: #fffdf8;
+  --ink: #15140f;
+  --ink-2: #4a473e;
+  --ink-3: #6a675b;
+  --line: #ddd7c9;
+  --line-2: #b9b2a1;
+  --line-strong: #15140f;
+  --accent: #2f8f3f;
+  --on-accent: #ffffff;
+  --me: #e2551b;
+
+  /* Один зелёный оттенок по нарастанию насыщенности — от «нет ритма» до «прижилось само» */
+  --status-dormant: #b7b2a3;
+  --status-irregular: #9cbb8a;
+  --status-stable: #2f8f3f;
+  --status-autonomous: #155c24;
+}
+
+.site * { box-sizing: border-box; }
+.site a { color: inherit; text-decoration: none; }
+.site button { font-family: inherit; }
+.site :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* ---------- 2. Каркас страницы ---------- */
+.s-wrap {
+  position: relative;
+  width: min(var(--col), 100% - 40px);
+  margin: 0 auto;
+  padding: var(--sp-4) 0 var(--sp-section);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+.s-main { display: flex; flex-direction: column; gap: var(--sp-section); counter-reset: sec; }
+.s-foot { color: var(--ink-3); font-size: var(--t-small); }
+
+/* Шапка */
+.s-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sp-2) var(--sp-3); padding-bottom: var(--sp-2); border-bottom: 1px solid var(--line); }
+.s-nav-home { font-weight: 800; letter-spacing: -0.01em; }
+.s-nav nav { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-1) var(--sp-3); }
+/* a. — та же специфичность, что у «.site a» выше, иначе оно перебивает цвет ссылки */
+a.s-nav-link { color: var(--ink-2); font-size: var(--t-small); font-weight: 600; padding: 4px 0; }
+a.s-nav-link:hover, a.s-nav-link.is-active { color: var(--ink); }
+a.s-nav-link.is-active { box-shadow: 0 2px 0 var(--accent); }
+a.s-nav-lang { font-family: var(--mono); font-size: var(--t-label); color: var(--ink-2); border: 1px solid var(--line-2); border-radius: var(--radius); padding: 2px 8px; }
+a.s-nav-lang:hover { color: var(--ink); border-color: var(--accent); }
+
+/* ---------- 3. Типографика ---------- */
+.s-eyebrow { margin: 0; font-family: var(--mono); font-size: var(--t-label); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.s-h2 { margin: 0; font-size: var(--t-h2); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
+.s-lead { margin: 0; font-size: var(--t-lead); line-height: 1.55; color: var(--ink-2); hyphens: auto; }
+.s-lead a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Раздел: жирная линия сверху, номер, заголовок */
+.s-section { display: flex; flex-direction: column; gap: var(--sp-3); border-top: 2px solid var(--line-strong); padding-top: var(--sp-3); counter-increment: sec; }
+.s-section::before { content: counter(sec, decimal-leading-zero); font-family: var(--mono); font-size: var(--t-label); letter-spacing: 0.1em; color: var(--accent); }
+.s-label { margin: 0; font-family: var(--mono); font-size: var(--t-label); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+h3.s-label { margin-top: var(--sp-2); padding-bottom: var(--sp-1); border-bottom: 1px solid var(--line); }
+
+/* ---------- 4. Строки-«определения»: заголовок слева, текст справа ---------- */
+.s-bento { display: grid; grid-template-columns: var(--head-col) minmax(0, 1fr); column-gap: var(--sp-3); }
+.s-card {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  gap: 4px var(--sp-3);
+  align-items: baseline;
+  padding: var(--sp-2) 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+}
+.s-card:has(> .s-chips) { grid-template-columns: minmax(0, 1fr); row-gap: var(--sp-1); }
+.s-card:has(> .s-chips) > .s-chips { margin-top: var(--sp-1); }
+a.s-card:hover .s-card-title { color: var(--accent); }
+.s-bento > .s-card:first-child { border-top: 0; }
+.s-card-title { font-size: var(--t-title); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+.s-card-text { color: var(--ink-2); font-size: var(--t-body); line-height: var(--lh-body); hyphens: auto; }
+/* Главное: цветная отметка слева */
+.s-feature { border-left: 3px solid var(--accent); padding-left: var(--sp-2); border-top: 0; margin: var(--sp-1) 0; }
+/* Год — отдельной строкой под заголовком */
+.s-step-year { display: block; margin-top: 2px; font-family: var(--mono); font-size: var(--t-label); font-weight: 500; color: var(--accent); letter-spacing: 0.04em; }
+.s-anchor { scroll-margin-top: var(--sp-3); }
+.s-card .s-chips { grid-column: 1 / -1; }
+.s-step-name { font-size: var(--t-title); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+
+/* ---------- 5. Кнопки и теги ---------- */
+.s-chips { display: flex; flex-wrap: wrap; gap: var(--sp-1); list-style: none; margin: 0; padding: 0; }
+.s-pill, .s-chip {
+  display: inline-flex; align-items: center;
+  padding: 9px 16px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  background: none;
+  color: var(--ink);
+  font-size: var(--t-small);
+  font-weight: 600;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.s-pill { font-family: var(--mono); font-weight: 500; }
+a.s-pill:hover, a.s-chip:hover { border-color: var(--accent); color: var(--accent); }
+.s-chip-static { cursor: default; color: var(--ink-2); }
+.s-chip-status { width: 8px; height: 8px; margin-left: 8px; border-radius: 50%; flex: none; }
+
+.s-status-legend { display: flex; flex-wrap: wrap; column-gap: var(--sp-3); row-gap: 4px; margin: 4px 0 var(--sp-1); font-size: var(--t-label); color: var(--ink-3); }
+.s-status-legend-item { display: inline-flex; align-items: center; gap: 6px; cursor: default; }
+.s-status-line { margin: 4px 0 0; font-weight: 600; color: var(--ink-2); }
+.s-status-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.s-chip.is-active { border-color: var(--accent); color: var(--ink); }
+/* Специфичность как у «.site a» / «a.s-pill:hover» выше — иначе они перебивают белый цвет текста кнопки */
+a.s-pill-solid, .s-pill-solid { background: var(--accent); border-color: var(--accent); color: var(--on-accent); cursor: pointer; }
+a.s-pill-solid:hover, .s-pill-solid:hover { background: var(--accent); color: var(--on-accent); opacity: 0.88; }
+
+/* Карта городов */
+.s-map { width: 100%; height: auto; display: block; }
+.s-map-land { fill: none; stroke: var(--line-2); stroke-width: 1.15; stroke-linecap: round; }
+.s-map-halo { fill: var(--pin-color, var(--accent)); opacity: 0.2; transition: opacity 0.2s, r 0.2s; }
+.s-map-dot { fill: var(--pin-color, var(--accent)); }
+.s-map-pin { cursor: default; }
+.s-map-pin.is-clickable { cursor: pointer; }
+.s-map-pin.is-active .s-map-halo { opacity: 0.45; r: 8; }
+.s-map-label { fill: var(--ink); font-family: var(--mono); font-size: 5px; paint-order: stroke; stroke: var(--bg); stroke-width: 1.5px; }
+/* Ключевые города */
+.s-chip.is-key { border-color: var(--accent); color: var(--ink); font-weight: 700; }
+.s-map-pin.is-key .s-map-halo { opacity: 0.35; }
+/* Текущая локация на её собственной странице — крупнее; цвет свой (по статусу), если есть, иначе акцентный */
+.s-map-pin.is-current .s-map-halo { fill: var(--pin-color, var(--me)); opacity: 0.45; }
+.s-map-pin.is-current .s-map-dot { fill: var(--pin-color, var(--me)); }
+
+/* Точки загораются по очереди — для интро-анимации на главной */
+.s-map-pin.is-sequential { opacity: 0; animation: s-map-pin-in 0.5s ease forwards; }
+@keyframes s-map-pin-in { to { opacity: 1; } }
+
+/* Интро с картой перед лендингом — только при первом визите */
+.s-intro {
+  position: fixed; inset: 0; z-index: 2000;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: var(--sp-4);
+  padding: var(--sp-4) var(--sp-2);
+  background: var(--bg);
+  transition: opacity 0.3s ease;
+}
+.s-intro-close { position: absolute; top: var(--sp-3); right: var(--sp-3); width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-2); background: var(--surface); color: var(--ink); font-size: 24px; line-height: 1; cursor: pointer; transition: border-color 0.15s, color 0.15s; }
+.s-intro-close:hover { border-color: var(--accent); color: var(--accent); }
+.s-intro-people { width: min(560px, 100%); display: flex; flex-direction: column; gap: var(--sp-1); }
+.s-intro-people-num { margin: 0; font-size: var(--t-small); color: var(--ink-2); }
+.s-intro-people-num span { font-family: var(--mono); font-size: 2.4em; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; margin-right: 6px; }
+.s-intro-bar { height: 10px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.s-intro-bar-fill { height: 100%; border-radius: 999px; background: var(--accent); }
+.s-intro-goal { margin: 0; align-self: flex-end; font-family: var(--mono); font-size: var(--t-label); color: var(--ink-3); }
+.s-intro .s-map-label { font-size: 6px; font-weight: 600; animation: s-map-pin-in 0.4s ease backwards; }
+.s-intro .s-map { width: min(1200px, 100%); max-height: 62vh; }
+.s-intro.is-leaving { opacity: 0; pointer-events: none; }
+.s-intro-head { text-align: center; display: flex; flex-direction: column; gap: var(--sp-1); }
+.s-intro-head .s-eyebrow { margin: 0; }
+.s-intro-title { margin: 0; font-size: var(--t-h2); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
+.s-intro-stat { margin: 0; font-family: var(--mono); font-size: var(--t-small); color: var(--ink-2); }
+.s-intro-count { display: inline-block; min-width: 2ch; font-size: 1.6em; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+/* ---------- 6. Jaiora: шапка, баннер встреч, хроника ---------- */
+.s-jhero { display: flex; flex-direction: column; align-items: flex-start; gap: var(--sp-3); padding-top: var(--sp-3); }
+.s-jhero > div { display: flex; flex-direction: column; gap: var(--sp-3); }
+.s-back { margin: 0; font-size: var(--t-small); }
+.s-back a { color: var(--ink-3); }
+.s-back a:hover { color: var(--accent); }
+.s-jlogo { width: 64px; height: 64px; }
+.s-jtitle { margin: 0; font-size: var(--t-h1); font-weight: 800; line-height: 1.02; letter-spacing: -0.045em; }
+
+/* Баннер встреч: главный факт страницы */
+.s-meet { display: grid; grid-template-columns: 1fr; gap: var(--sp-2); padding: var(--sp-4) var(--sp-3); border: 2px solid var(--accent); border-radius: var(--radius); background: var(--surface); }
+.s-meet.has-photo { display: flex; flex-wrap: wrap; gap: var(--sp-4); align-items: flex-start; }
+.s-meet.has-photo > .s-meet-body { flex: 1 1 280px; display: flex; flex-direction: column; gap: var(--sp-2); }
+.s-meet-photo-btn { flex: 0 0 280px; width: 280px; display: block; padding: 0; border: none; background: none; cursor: zoom-in; }
+.s-meet-photo { display: block; width: 100%; height: auto; object-fit: cover; border-radius: var(--radius-lg); box-shadow: 0 4px 16px rgba(21, 20, 15, 0.09); transition: opacity 0.15s; }
+.s-meet-photo-btn:hover > .s-meet-photo { opacity: 0.85; }
+@media (max-width: 640px) {
+  .s-meet-photo-btn { flex-basis: 100%; width: 100%; }
+}
+
+/* Лайтбокс: фото открывается поверх страницы, без перехода на новую вкладку — плавно, туда и обратно */
+.s-lightbox { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: var(--sp-4); background: rgba(20, 18, 14, 0.85); cursor: zoom-out; animation: s-lightbox-in 0.2s ease; }
+.s-lightbox.is-closing { animation: s-lightbox-out 0.18s ease forwards; }
+.s-lightbox-img { max-width: 100%; max-height: 100%; border-radius: var(--radius-lg); cursor: default; animation: s-lightbox-img-in 0.22s ease; }
+.s-lightbox.is-closing .s-lightbox-img { animation: s-lightbox-img-out 0.18s ease forwards; }
+.s-lightbox-close { position: fixed; top: var(--sp-3); right: var(--sp-3); width: 44px; height: 44px; border-radius: 50%; border: none; background: var(--surface); color: var(--ink-1); font-size: 24px; line-height: 1; cursor: pointer; }
+
+@keyframes s-lightbox-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes s-lightbox-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes s-lightbox-img-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+@keyframes s-lightbox-img-out { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.96); } }
+.s-meet-when { margin: 0 0 4px; font-family: var(--mono); font-size: var(--t-label); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.s-meet-title { margin: 0; font-size: var(--t-h2); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
+.s-meet-text { margin: 0; color: var(--ink-2); hyphens: auto; }
+.s-meet-cities { padding-top: var(--sp-1); }
+
+/* Выравнивание текста по ширине — только на широких экранах: в узкой колонке
+   без переносов между словами получаются огромные разрывы */
+@media (min-width: 641px) {
+  .s-lead, .s-card-text, .s-meet-text, .s-step-text { text-align: justify; }
+}
+
+/* Хроника */
+.s-timeline { list-style: none; margin: 0; padding: 0 0 0 var(--sp-4); position: relative; display: grid; grid-template-columns: calc(var(--head-col) - var(--sp-4)) minmax(0, 1fr); column-gap: var(--sp-3); }
+.s-timeline > li { grid-column: 1 / -1; }
+.s-step { position: relative; display: grid; grid-template-columns: subgrid; gap: 4px var(--sp-3); padding: var(--sp-2) 0; }
+.s-step-text { color: var(--ink-2); hyphens: auto; }
+.s-step::before { content: ''; position: absolute; left: -32px; top: 26px; width: 10px; height: 10px; border: 2px solid var(--ph, var(--line-2)); border-radius: 50%; background: var(--bg); z-index: 1; }
+.s-step::after, .s-phase::after { content: ''; position: absolute; left: -28px; top: 0; bottom: 0; width: 2px; background: var(--ph, var(--line-2)); opacity: 0.6; }
+.s-phase { position: relative; margin: 0; padding: var(--sp-3) 0 var(--sp-1); font-family: var(--mono); font-size: var(--t-label); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ph, var(--accent)); }
+.s-phase::before { content: ''; position: absolute; left: -36px; top: calc(50% + 8px); width: 16px; height: 16px; border: 2px solid var(--ph, var(--accent)); border-radius: 4px; background: var(--bg); transform: rotate(45deg); z-index: 1; }
+.s-step-year { color: var(--ph, var(--accent)); }
+.s-step-now::before { background: var(--ph, var(--accent)); }
+.s-step-goal::before { border-style: dashed; }
+.s-step-goal .s-step-name { color: var(--ph, var(--accent)); }
+.s-step-pre .s-step-text { opacity: 0.85; }
+.ph-me { --ph: var(--me, #e2551b); }
+.ph-together { --ph: #1f9d55; }
+.ph-people { --ph: #0e88a8; }
+.ph-jaiora { --ph: #3346a8; }
+
+/* ---------- 7. Блог ---------- */
+.s-article { display: flex; flex-direction: column; gap: var(--sp-4); }
+.s-prose { font-size: var(--t-body); line-height: 1.75; }
+.s-prose p { margin: 0 0 1.1em; }
+.s-prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.s-prose blockquote { margin: 1.2em 0; padding-left: var(--sp-2); border-left: 3px solid var(--accent); color: var(--ink-2); }
+
+/* ---------- 8. Адаптив ---------- */
+@media (max-width: 640px) {
+  .s-main { gap: var(--sp-5); }
+  .s-bento, .s-timeline { grid-template-columns: minmax(0, 1fr); }
+  .s-timeline { padding-left: var(--sp-3); }
+  .s-step::before { left: -24px; }
+  .s-step::after, .s-phase::after { left: -20px; }
+  .s-phase::before { left: -28px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site * { transition: none !important; }
+}
