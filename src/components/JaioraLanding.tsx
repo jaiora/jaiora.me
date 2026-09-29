@@ -172,22 +172,6 @@ export default function JaioraLanding() {
       </section>
 
       <section className="s-section">
-        <h2 className="s-h2">{c.doneTitle}</h2>
-        <h3 className="s-label">{c.socialTitle}</h3>
-        <div className="s-bento">
-          {c.social.map((s) => (
-            <div key={s.title} className="s-card s-span-6 s-card-static s-feature">
-              <span className="s-card-title">
-                {s.title}
-                <span className="s-step-year">{s.year}</span>
-              </span>
-              <span className="s-card-text">{s.text}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="s-section">
         <h2 className="s-h2">{c.storyTitle}</h2>
         <p className="s-lead">
           {c.storyBy.lead}
@@ -221,7 +205,6 @@ export default function JaioraLanding() {
 
       <section className="s-section">
         <h2 className="s-h2">{c.haveTitle}</h2>
-        <Tiles items={c.platform} />
         <div className="s-bento">
           <div id="cities" className="s-card s-span-12 s-card-static s-anchor">
             <span className="s-card-title">{c.cityChats}</span>
@@ -240,11 +223,6 @@ export default function JaioraLanding() {
             <CityChips items={CITY_CHATS} lang={lang} active={activeCity} onActive={setActiveCity} />
           </div>
         </div>
-      </section>
-
-      <section className="s-section">
-        <h2 className="s-h2">{c.helpTitle}</h2>
-        <Tiles items={c.help} />
       </section>
 
       <Faq title={t(FAQ_TITLE)} items={homeFaq(lang)} />

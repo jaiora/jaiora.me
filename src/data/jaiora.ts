@@ -14,18 +14,12 @@ export interface JaioraContent {
   values: Tile[]
   findTitle: string
   find: Tile[]
-  doneTitle: string
-  socialTitle: string
-  social: { title: string; year: string; text: string }[]
   storyTitle: string
   storyBy: { lead: string; name: string; href: string; tail: string }
   story: Story[]
   haveTitle: string
-  platform: Tile[]
   cityChats: string
   themeChats: string
-  helpTitle: string
-  help: Tile[]
 }
 
 const ru: JaioraContent = {
@@ -58,12 +52,6 @@ const ru: JaioraContent = {
     { title: 'Любая задача', text: 'Юрист, врач, репетитор по физике для ребёнка: кто-то точно знает нужного человека' },
     { title: 'Переезд', text: 'На новом месте встретят, подскажут и познакомят' },
   ],
-  doneTitle: 'Что уже получилось',
-  socialTitle: 'Помогли людям',
-  social: [
-    { title: 'Батуми', year: '2026', text: 'Помогли спасти жизнь человеку и собрали деньги на лечение от рака.' },
-    { title: 'Бангкок', year: '2025', text: 'Помогли найти пропавшего парня.' },
-  ],
   storyTitle: 'Как всё началось',
   storyBy: { lead: 'Рассказывает ', name: 'Егор Урванов', href: 'https://www.urvanov.com/', tail: ', основатель Jaiora' },
   story: [
@@ -81,17 +69,8 @@ const ru: JaioraContent = {
     { title: 'Цель', year: '2027', goal: true, text: '30 городов, 30 000 человек по всему миру и свой инструмент для нетворка: оффлайн-LinkedIn, который по задаче или цели подскажет, кто в сообществе может помочь.' },
   ],
   haveTitle: 'Что у нас есть',
-  platform: [
-    { title: 'Конференции', text: 'Доклады и знакомства в одном зале' },
-    { title: 'YouTube', text: 'Записи выступлений и разборы' },
-  ],
   cityChats: 'Чаты по локациям',
   themeChats: 'Тематические чаты и каналы',
-  helpTitle: 'Чем ещё помогаем',
-  help: [
-    { title: 'Развитие бизнеса', text: 'Помогаем с продуктом, процессами и операционкой' },
-    { title: 'Задачи общего плана', text: 'Приходи с задачей: найдём человека или решим вместе' },
-  ],
 }
 
 const en: JaioraContent = {
@@ -124,12 +103,6 @@ const en: JaioraContent = {
     { title: 'Any task', text: 'A lawyer, a doctor, a physics tutor for your child: someone surely knows the right person' },
     { title: 'Relocation', text: 'At the new place people will greet you, advise, and introduce you' },
   ],
-  doneTitle: 'What we have achieved',
-  socialTitle: 'Helped people',
-  social: [
-    { title: 'Batumi', year: '2026', text: 'Helped save a person’s life and raised money for cancer treatment.' },
-    { title: 'Bangkok', year: '2025', text: 'Helped find a missing young man.' },
-  ],
   storyTitle: 'How it all started',
   storyBy: { lead: 'Told by ', name: 'Egor Urvanov', href: 'https://www.urvanov.com/', tail: ', founder of Jaiora' },
   story: [
@@ -147,17 +120,8 @@ const en: JaioraContent = {
     { title: 'Goal', year: '2027', goal: true, text: '30 cities, 30,000 people worldwide and our own networking tool: an offline LinkedIn that, given a task or goal, tells who in the community can help.' },
   ],
   haveTitle: 'What we have',
-  platform: [
-    { title: 'Conferences', text: 'Talks and meeting people in one room' },
-    { title: 'YouTube', text: 'Talk recordings and breakdowns' },
-  ],
   cityChats: 'Location chats',
   themeChats: 'Topic chats and channels',
-  helpTitle: 'How else we help',
-  help: [
-    { title: 'Business growth', text: 'We help with product, processes, and operations' },
-    { title: 'General tasks', text: 'Come with a task: we will find a person or solve it together' },
-  ],
 }
 
 export const JAIORA: L<JaioraContent> = { ru, en }

@@ -127,14 +127,8 @@ function homeSection(lang) {
     `### ${c.findTitle}`,
     ...c.find.map((f) => `- ${f.title}: ${f.text}`),
     '',
-    `### ${c.socialTitle}`,
-    ...c.social.map((s) => `- ${s.title} (${s.year}): ${s.text}`),
-    '',
     `### ${c.storyTitle}`,
     ...c.story.map((s) => `- ${s.phase ? `[${s.phase}] ` : ''}${s.title}${s.year ? ` (${s.year})` : ''}: ${s.text}`),
-    '',
-    `### ${c.helpTitle}`,
-    ...c.help.map((h) => `- ${h.title}: ${h.text}`),
     '',
   ].join('\n')
 }
@@ -145,6 +139,7 @@ function locationsSection(lang) {
     out.push(`### ${name(c, lang)}`, `${lang === 'en' ? 'Status' : 'Статус'}: ${status(c, lang)}. ${lang === 'en' ? 'Chat' : 'Чат'}: ${c.url}. ${urlOf(lang === 'en' ? `/en/location/${c.slug}` : `/location/${c.slug}`)}`)
     if (c.story?.banner) out.push('', `${c.story.banner.title[lang]}. ${c.story.banner.text[lang]}`)
     if (c.story) out.push('', c.story.paragraph[lang].map((p) => p.text).join(''))
+    if (c.helped) out.push('', ...c.helped.map((h) => `- ${h.title[lang]} (${h.year}): ${h.text[lang]}`))
     out.push('')
   }
   return out.join('\n')

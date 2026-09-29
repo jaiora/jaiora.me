@@ -90,6 +90,8 @@ export interface CityChat extends LinkItem {
   onRu?: boolean
   extra?: CityExtra
   story?: CityStory
+  // Случаи, когда участники локации помогли человеку в беде
+  helped?: { title: L; year: string; text: L }[]
   status?: LocationStatus
 }
 
@@ -103,6 +105,13 @@ export const whereText = (city: CityChat, lang: Lang) => (lang === 'ru' ? `${cit
 export const CITY_CHATS: CityChat[] = [
   {
     slug: 'batumi',
+    helped: [
+      {
+        title: { ru: 'Спасли жизнь', en: 'Saved a life' },
+        year: '2026',
+        text: { ru: 'Помогли спасти жизнь человеку и собрали деньги на лечение от рака.', en: 'Helped save a person’s life and raised money for cancer treatment.' },
+      },
+    ],
     url: 'https://t.me/batumi_it_digital',
     label: 'Батуми',
     en: { label: 'Batumi' },
@@ -234,6 +243,13 @@ export const CITY_CHATS: CityChat[] = [
   },
   {
     slug: 'bangkok',
+    helped: [
+      {
+        title: { ru: 'Нашли человека', en: 'Found a missing person' },
+        year: '2025',
+        text: { ru: 'Помогли найти пропавшего парня.', en: 'Helped find a missing young man.' },
+      },
+    ],
     url: 'https://t.me/bangkok_it',
     label: 'Бангкок',
     en: { label: 'Bangkok' },

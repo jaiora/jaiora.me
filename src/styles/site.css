@@ -248,24 +248,29 @@ a.s-pill-solid:hover, .s-pill-solid:hover { background: var(--accent); color: va
 .s-timeline > li { grid-column: 1 / -1; }
 .s-step { position: relative; display: grid; grid-template-columns: subgrid; gap: 4px var(--sp-3); padding: var(--sp-2) 0; }
 .s-step-text { color: var(--ink-2); hyphens: auto; }
-.s-step::before { content: ''; position: absolute; left: -32px; top: 26px; width: 10px; height: 10px; border: 2px solid var(--ph, var(--line-2)); border-radius: 50%; background: var(--bg); z-index: 1; }
-.s-step::after, .s-phase::after { content: ''; position: absolute; left: -28px; top: 0; bottom: 0; width: 2px; background: var(--ph, var(--line-2)); opacity: 0.6; }
-.s-phase { position: relative; margin: 0; padding: var(--sp-3) 0 var(--sp-1); font-family: var(--mono); font-size: var(--t-label); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ph, var(--accent)); }
-.s-phase::before { content: ''; position: absolute; left: -36px; top: calc(50% + 8px); width: 16px; height: 16px; border: 2px solid var(--ph, var(--accent)); border-radius: 4px; background: var(--bg); transform: rotate(45deg); z-index: 1; }
+/* Все метки и линия центрируются по одной оси --rail, поэтому не разъезжаются при смене размеров */
+.s-timeline { --rail: -27px; }
+.s-step::after, .s-phase::after { content: ''; position: absolute; left: var(--rail); top: 0; bottom: 0; width: 2px; transform: translateX(-50%); background: var(--ph, var(--line-2)); opacity: 0.35; }
+.s-step::before, .s-phase::before { content: ''; position: absolute; left: var(--rail); transform: translate(-50%, -50%); border-radius: 50%; z-index: 1; }
+.s-phase { --phase-pt: var(--sp-3); position: relative; margin: 0; padding: var(--phase-pt) 0 var(--sp-1); font-family: var(--mono); font-size: var(--t-label); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ph, var(--accent)); }
+/* Шаг — маленькая сплошная точка; кольцо цвета фона отрезает линию вокруг неё */
+.s-step::before { top: 31px; width: 8px; height: 8px; background: var(--ph, var(--line-2)); box-shadow: 0 0 0 4px var(--bg); }
+/* Этап — «станция»: кольцо с точкой внутри, по центру строки подписи */
+.s-phase::before { top: calc(var(--phase-pt) + 0.66rem); width: 16px; height: 16px; border: 2px solid var(--ph, var(--accent)); background: radial-gradient(circle, var(--ph, var(--accent)) 0 3px, var(--bg) 3.5px); }
 .s-step-year { color: var(--ph, var(--accent)); }
-.s-step-now::before { background: var(--ph, var(--accent)); }
-.s-step-goal::before { border-style: dashed; }
+.s-step-now::before { width: 12px; height: 12px; box-shadow: 0 0 0 4px var(--bg), 0 0 0 7px color-mix(in srgb, var(--ph, var(--accent)) 25%, transparent); }
+.s-step-goal::before { width: 12px; height: 12px; background: var(--bg); border: 2px dashed var(--ph, var(--accent)); }
 .s-step-goal .s-step-name { color: var(--ph, var(--accent)); }
 .s-step-pre .s-step-text { opacity: 0.85; }
 .ph-me { --ph: var(--me, #e2551b); }
-/* До сообществ — оранжевый основателя; дальше одна зелёная шкала, темнеет по мере того, как сеть растёт */
-.ph-together { --ph: var(--status-stable); }
-.ph-people { --ph: #22763a; }
-.ph-jaiora { --ph: var(--status-autonomous); }
+/* До сообществ — оранжевый основателя; дальше одна зелёная шкала от тёмного к светлому */
+.ph-together { --ph: var(--status-autonomous); }
+.ph-people { --ph: var(--status-stable); }
+.ph-jaiora { --ph: #4a9e57; }
 /* Граница двух частей хроники: линия через всю ширину, вертикаль ленты здесь прерывается */
 .s-group { display: flex; align-items: center; gap: var(--sp-2); margin: 0 0 0 calc(-1 * var(--sp-4)); padding: var(--sp-2) 0 0; font-size: var(--t-small); font-weight: 800; letter-spacing: -0.01em; color: var(--ph, var(--ink)); }
 .s-group::after { content: ''; flex: 1; height: 1px; background: var(--ph, var(--line)); opacity: 0.4; }
-.s-group + .s-phase { padding-top: var(--sp-2); }
+.s-group + .s-phase { --phase-pt: var(--sp-2); }
 .s-timeline > .s-group:not(:first-child) { margin-top: var(--sp-4); }
 
 /* ---------- 7. Блог ---------- */
@@ -280,9 +285,7 @@ a.s-pill-solid:hover, .s-pill-solid:hover { background: var(--accent); color: va
   .s-main { gap: var(--sp-5); }
   .s-bento, .s-timeline { grid-template-columns: minmax(0, 1fr); }
   .s-timeline { padding-left: var(--sp-3); }
-  .s-step::before { left: -24px; }
-  .s-step::after, .s-phase::after { left: -20px; }
-  .s-phase::before { left: -28px; }
+  .s-timeline { --rail: -19px; }
   .s-group { margin-left: calc(-1 * var(--sp-3)); }
 }
 

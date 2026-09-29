@@ -27,6 +27,7 @@ const T = {
   otherCities: { ru: 'Другие локации', en: 'Other locations' },
   otherFormats: { ru: 'Другие форматы', en: 'Other formats' },
   storyTitle: { ru: 'Не только суббота', en: 'Not just Saturday' },
+  helpedTitle: { ru: 'Помогли людям', en: 'Helped people' },
   next: { ru: 'Ближайшая встреча', en: 'Next meetup' },
   updated: { ru: 'Обновлено', en: 'Updated' },
   joinShort: { ru: 'Открыть чат ↗', en: 'Open chat ↗' },
@@ -159,6 +160,23 @@ export default function LocationView() {
               {t(T.updated)}: <time dateTime={city.story.updated}>{formatDate(city.story.updated, lang)}</time>
             </p>
           )}
+        </section>
+      )}
+
+      {city.helped && (
+        <section className="s-section">
+          <h2 className="s-h2">{t(T.helpedTitle)}</h2>
+          <div className="s-bento">
+            {city.helped.map((h) => (
+              <div key={h.year + h.title.ru} className="s-card s-span-12 s-card-static s-feature">
+                <span className="s-card-title">
+                  {t(h.title)}
+                  <span className="s-step-year">{h.year}</span>
+                </span>
+                <span className="s-card-text">{t(h.text)}</span>
+              </div>
+            ))}
+          </div>
         </section>
       )}
 
