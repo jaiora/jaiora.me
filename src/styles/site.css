@@ -90,7 +90,7 @@ a.s-nav-lang:hover { color: var(--ink); border-color: var(--accent); }
 .s-eyebrow { margin: 0; font-family: var(--mono); font-size: var(--t-label); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
 .s-h2 { margin: 0; font-size: var(--t-h2); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
 .s-lead { margin: 0; font-size: var(--t-lead); line-height: 1.55; color: var(--ink-2); hyphens: auto; }
-.s-lead a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.s-lead a, .s-faq-a a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
 
 /* Раздел: жирная линия сверху, номер, заголовок */
 .s-section { display: flex; flex-direction: column; gap: var(--sp-3); border-top: 2px solid var(--line-strong); padding-top: var(--sp-3); counter-increment: sec; }
