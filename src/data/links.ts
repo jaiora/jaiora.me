@@ -348,8 +348,8 @@ export const CITY_CHATS: CityChat[] = [
       banner: {
         title: { ru: 'От вечеринки в резорте до Sala Mexicali', en: 'From a resort party to Sala Mexicali' },
         text: {
-          ru: 'Встречаемся с декабря 2025-го: первая встреча прошла в закрытом пляжном резорте. После паузы и неудачной попытки перезапуска в апреле сообщество вернулось в июне 2026-го — сначала в We Cafe, а с третьей встречи, с 27 июня, и по сей день — в Sala Mexicali Phuket Town.',
-          en: 'We’ve been meeting since December 2025: the first meetup was at a private beach resort. After a pause and a failed relaunch attempt in April, the community came back in June 2026 — first at We Cafe, then from the third meetup on, since June 27, at Sala Mexicali Phuket Town, where it’s stayed ever since.',
+          ru: 'Встречаемся с декабря 2025-го: первая встреча прошла в закрытом пляжном резорте. После паузы и неудачной попытки перезапуска в апреле сообщество вернулось в июне 2026-го — сначала в We Cafe, а с третьей встречи, с 27 июня, — в Sala Mexicali Phuket Town. В августе несколько встреч прошли в Greek Kitchen у бухты Чалонг, в сентябре вернулись в Sala Mexicali.',
+          en: 'We’ve been meeting since December 2025: the first meetup was at a private beach resort. After a pause and a failed relaunch attempt in April, the community came back in June 2026 — first at We Cafe, then from the third meetup on, since June 27, at Sala Mexicali Phuket Town. In August a few meetups moved to Greek Kitchen by Chalong Bay, and in September they returned to Sala Mexicali.',
         },
       },
       updated: '2026-09-28',
@@ -357,7 +357,7 @@ export const CITY_CHATS: CityChat[] = [
         ru: [
           {
             text:
-              'Первая встреча в конце декабря 2025-го прошла в закрытом пляжном резорте — бассейн, бар, шезлонги, барбекю. Позже случались встречи и по инициативе других — например, в январе Макс Рейнор собирал всех в Wine Connection в Бангтао. В апреле сообщество пробовало возродить субботы, перебрало с десяток мест, но не срослось. Настоящий перезапуск случился в июне: сначала в We Cafe, а с третьей встречи, с 27 июня, — в Sala Mexicali Phuket Town, где держится с тех пор. Тема для субботы обычно рождается сама на неделе: то самая нелепая опечатка на карте, то маршруты для похода, то налоги цифрового кочевника в Таиланде. ',
+              'Первая встреча в конце декабря 2025-го прошла в закрытом пляжном резорте — бассейн, бар, шезлонги, барбекю. Позже случались встречи и по инициативе других — например, в январе Макс Рейнор собирал всех в Wine Connection в Бангтао. В апреле сообщество пробовало возродить субботы, перебрало с десяток мест, но не срослось. Настоящий перезапуск случился в июне: сначала в We Cafe, а с третьей встречи, с 27 июня, — в Sala Mexicali Phuket Town; в августе несколько суббот прошли в Greek Kitchen у бухты Чалонг, а в сентябре встречи вернулись в Sala Mexicali. Тема для субботы обычно рождается сама на неделе: то самая нелепая опечатка на карте, то маршруты для похода, то налоги цифрового кочевника в Таиланде. ',
           },
           { text: 'Олег Теретенко', href: 'https://t.me/olegteretenko' },
           {
@@ -368,7 +368,7 @@ export const CITY_CHATS: CityChat[] = [
         en: [
           {
             text:
-              'The first meetup, in late December 2025, was at a private beach resort — a pool, a bar, sun loungers, a barbecue. Later, others stepped up too — in January, Maks Raynor gathered everyone at Wine Connection in Bangtao. In April the community tried to revive the Saturdays, went through about a dozen venues, but it didn’t stick. The real relaunch came in June: first at We Cafe, then from the third meetup on, since June 27, at Sala Mexicali Phuket Town, where it’s stayed ever since. The Saturday topic usually comes up on its own during the week: the silliest map typo, a hiking route, or a digital nomad’s taxes in Thailand. ',
+              'The first meetup, in late December 2025, was at a private beach resort — a pool, a bar, sun loungers, a barbecue. Later, others stepped up too — in January, Maks Raynor gathered everyone at Wine Connection in Bangtao. In April the community tried to revive the Saturdays, went through about a dozen venues, but it didn’t stick. The real relaunch came in June: first at We Cafe, then from the third meetup on, since June 27, at Sala Mexicali Phuket Town; in August a few Saturdays took place at Greek Kitchen by Chalong Bay, and in September the meetups returned to Sala Mexicali. The Saturday topic usually comes up on its own during the week: the silliest map typo, a hiking route, or a digital nomad’s taxes in Thailand. ',
           },
           { text: 'Oleg Teretenko', href: 'https://t.me/olegteretenko' },
           {
