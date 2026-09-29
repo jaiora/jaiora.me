@@ -33,6 +33,8 @@ export interface CityStory {
   // (портретное «3 / 4» или альбомное «4 / 3»), чтобы не обрезать по чужому шаблону
   photo?: { src: string; alt: L; aspect: string }
   paragraph: { ru: TextPart[]; en: TextPart[] }
+  // Когда история последний раз сверялась с перепиской чата (YYYY-MM-DD)
+  updated?: string
 }
 
 // Статус ритма встреч — ставим только там, где он подтверждён реальной перепиской,
@@ -62,6 +64,21 @@ export const STATUS_META: Record<LocationStatus, { color: string; label: L; hint
     label: { ru: 'Автономный', en: 'Autonomous' },
     hint: { ru: 'Идёт само, без организатора', en: 'Runs on its own, no organizer needed' },
   },
+}
+
+// Часовой пояс локации: расписание регулярной встречи в разметке и дата ближайшей субботы на странице
+export const CITY_TZ: Record<string, string> = {
+  bangkok: 'Asia/Bangkok',
+  'da-nang': 'Asia/Ho_Chi_Minh',
+  phuket: 'Asia/Bangkok',
+  bali: 'Asia/Makassar',
+  batumi: 'Asia/Tbilisi',
+  almaty: 'Asia/Almaty',
+  moscow: 'Europe/Moscow',
+  'saint-petersburg': 'Europe/Moscow',
+  antalya: 'Europe/Istanbul',
+  belgrade: 'Europe/Belgrade',
+  yerevan: 'Asia/Yerevan',
 }
 
 export interface CityChat extends LinkItem {
@@ -97,6 +114,7 @@ export const CITY_CHATS: CityChat[] = [
           en: 'We’ve been meeting since January 2025 — one of the oldest locations in the network: started at Sinori, then an Irish pub, then SushiGO. After a pause over the winter of 2026, the tradition restarted in May, and since September, Saturdays are run by Natalie and Ksenia.',
         },
       },
+      updated: '2026-09-29',
       paragraph: {
         ru: [
           {
@@ -154,6 +172,7 @@ export const CITY_CHATS: CityChat[] = [
           en: 'We’ve been meeting since January 2025 — first almost every week at NU ARROWS Caffe&Restaurant, then from April that same year to today, on the beach at WiWi Beach Coffee & Food. More than fifty Saturdays running, without a real break.',
         },
       },
+      updated: '2026-09-28',
       paragraph: {
         ru: [
           {
@@ -232,6 +251,7 @@ export const CITY_CHATS: CityChat[] = [
         alt: { ru: 'Встреча Jaiora на руфтопе в Бангкоке', en: 'A Jaiora meetup on a rooftop in Bangkok' },
         aspect: '3 / 4',
       },
+      updated: '2026-09-28',
       paragraph: {
         ru: [
           { text: 'Кроме привычной субботы Бангкок — самое богатое на форматы место в сети. Регулярные встречи в разных местах вели два человека: ' },
@@ -270,6 +290,7 @@ export const CITY_CHATS: CityChat[] = [
           en: 'We’ve been meeting since November 2025: started every two weeks at sunset in Berawa, then Jimbaran and Ubud in turn. Since late May 2026, we’ve met every Saturday at one place — Ju Bali in Changu.',
         },
       },
+      updated: '2026-09-28',
       paragraph: {
         ru: [
           { text: 'Чат и первые встречи здесь придумала ' },
@@ -331,6 +352,7 @@ export const CITY_CHATS: CityChat[] = [
           en: 'We’ve been meeting since December 2025: the first meetup was at a private beach resort. After a pause and a failed relaunch attempt in April, the community came back in June 2026 — first at We Cafe, then from the third meetup on, since June 27, at Sala Mexicali Phuket Town, where it’s stayed ever since.',
         },
       },
+      updated: '2026-09-28',
       paragraph: {
         ru: [
           {
@@ -373,6 +395,7 @@ export const CITY_CHATS: CityChat[] = [
           en: 'We met from October 2024 — Saturday at a coworking, then a bar, then billiards. There haven’t been regular meetups since summer 2025; these days the chat runs more as a bulletin board for IT in Almaty.',
         },
       },
+      updated: '2026-09-28',
       paragraph: {
         ru: [
           {
@@ -421,6 +444,7 @@ export const CITY_CHATS: CityChat[] = [
         alt: { ru: 'Встреча Jaiora в Санкт-Петербурге', en: 'A Jaiora meetup in Saint Petersburg' },
         aspect: '4 / 3',
       },
+      updated: '2026-09-28',
       paragraph: {
         ru: [
           { text: 'Ещё до своих суббот чат жил как афиша: ' },
@@ -456,6 +480,7 @@ export const CITY_CHATS: CityChat[] = [
           en: 'We met every Saturday from March to July 2025 — Leman Cafe, then an Irish pub. There’s been no regular spot since: people get together ad hoc, whenever it comes together.',
         },
       },
+      updated: '2026-09-29',
       paragraph: {
         ru: [
           { text: 'Первые десять суббот, с марта по июль 2025-го, вели ' },
@@ -498,6 +523,7 @@ export const CITY_CHATS: CityChat[] = [
         alt: { ru: 'Настольные игры на встрече Jaiora в Москве', en: 'Board games at a Jaiora meetup in Moscow' },
         aspect: '4 / 3',
       },
+      updated: '2026-09-28',
       paragraph: {
         ru: [
           { text: 'Кроме субботы у Москвы уже есть своя внутренняя жизнь: участники сами собрали мини-базу кортов для бадминтона и падел-тенниса по всему городу — от Алтуфьево до Лужников. ' },
@@ -529,6 +555,7 @@ export const CITY_CHATS: CityChat[] = [
           en: 'The chat has been open since April 2025, but it really came back to life only in September 2026: a wave of new members joined within days, and the first meetup is set for October 3 — the venue is still being picked.',
         },
       },
+      updated: '2026-09-29',
       paragraph: {
         ru: [
           { text: 'Чат создали в апреле 2025-го — но всерьёз дошли руки только в сентябре 2026-го. ' },
@@ -566,6 +593,7 @@ export const CITY_CHATS: CityChat[] = [
           en: 'The chat opened on September 20, 2026. The first meetup is on October 3 — the venue is still being picked.',
         },
       },
+      updated: '2026-09-28',
       paragraph: {
         ru: [
           {

@@ -20,4 +20,9 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+  {
+    // Точка входа пререндера: работает только при сборке, горячая перезагрузка к ней неприменима
+    files: ['src/entry-server.tsx'],
+    rules: { 'react-refresh/only-export-components': 'off' },
+  },
 ])

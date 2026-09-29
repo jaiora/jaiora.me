@@ -1,14 +1,17 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import JaioraLanding from '@/components/JaioraLanding'
 import LocationsView from '@/components/LocationsView'
 import LocationView from '@/components/LocationView'
 import BlogView from '@/components/BlogView'
 import BlogPostView from '@/components/BlogPostView'
 import TeamView from '@/components/TeamView'
+import NotFoundView from '@/components/NotFoundView'
 import { usePageMeta } from '@/lib/usePageMeta'
+import { useScrollToTop } from '@/lib/useScrollToTop'
 
 export default function App() {
   usePageMeta()
+  useScrollToTop()
   return (
     <Routes>
       <Route path="/" element={<JaioraLanding />} />
@@ -23,7 +26,7 @@ export default function App() {
       <Route path="/en/blog" element={<BlogView />} />
       <Route path="/en/blog/:slug" element={<BlogPostView />} />
       <Route path="/en/team" element={<TeamView />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="*" element={<NotFoundView />} />
     </Routes>
   )
 }

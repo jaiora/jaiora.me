@@ -21,13 +21,15 @@ export default function TeamView() {
       </header>
 
       <section className="s-section">
-        <div className="s-chips">
+        <ul className="s-chips">
           {TEAM.map((m) => (
-            <a key={m.handle} href={`https://t.me/${m.handle}`} target="_blank" rel="noopener noreferrer" className="s-chip">
-              {m.name}
-            </a>
+            <li key={m.handle}>
+              <a href={`https://t.me/${m.handle}`} target="_blank" rel="noopener noreferrer" className="s-chip">
+                {m.name}
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
     </Page>
   )

@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect, useState, useSyncExternalStore } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Page from '@/components/site/Page'
 import { CityChips } from '@/components/site/Chips'
@@ -7,6 +7,8 @@ import { JAIORA, NETWORK, type Tile } from '@/data/jaiora'
 import { useT } from '@/lib/i18n'
 import type { Place } from '@/data/places'
 import PlacesMap from '@/components/site/PlacesMap'
+import Faq from '@/components/site/Faq'
+import { FAQ_TITLE, homeFaq } from '@/data/faq'
 
 // Города чатов на карте: названия и порядок — из списка чатов
 const CITY_PLACES: Place[] = CITY_CHATS.map((c) => ({
@@ -16,14 +18,26 @@ const CITY_PLACES: Place[] = CITY_CHATS.map((c) => ({
   color: c.status ? STATUS_META[c.status].color : undefined,
 }))
 
-// В заставке точки загораются с востока на запад
-const INTRO_PLACES: Place[] = [...CITY_PLACES].sort((a, b) => b.lon - a.lon)
+// В заставке точки загораются с востока на запад, все одним фирменным цветом — статусы тут не показываем
+const INTRO_PLACES: Place[] = [...CITY_PLACES].sort((a, b) => b.lon - a.lon).map((p) => ({ ...p, color: undefined }))
 
 const PHASE_CLASS = ['ph-me', 'ph-together', 'ph-people', 'ph-jaiora']
 
 // Анимация точек на карте показываем только первому визиту — дальше не повторяем
 const INTRO_KEY = 'jaiora-intro-seen'
+const noopSubscribe = () => () => {}
+// Поисковым и ИИ-роботам заставку не показываем: полноэкранный слой поверх контента поисковики штрафуют
+const BOT_RE = /Googlebot|bingbot|YandexBot|Baiduspider|DuckDuckBot|Slurp|facebookexternalhit|Twitterbot|LinkedInBot|TelegramBot|GPTBot|ClaudeBot|PerplexityBot|Applebot|bot|crawl|spider|headless/i
+function isFirstVisit() {
+  if (BOT_RE.test(navigator.userAgent)) return false
+  try {
+    return !localStorage.getItem(INTRO_KEY)
+  } catch {
+    return false
+  }
+}
 const INTRO_STEP_MS = 900
+const INTRO_HOLD_MS = 2500
 
 const INTRO_T = {
   title: { ru: 'Свои люди в каждом городе', en: 'Your people in every city' },
@@ -63,7 +77,10 @@ function IntroOverlay({ onDone }: { onDone: () => void }) {
   const current = step >= 1 && step <= total ? step - 1 : null
 
   useEffect(() => {
-    if (step > total) return
+    if (step > total) {
+      const timer = setTimeout(() => setLeaving(true), INTRO_HOLD_MS)
+      return () => clearTimeout(timer)
+    }
     const timer = setTimeout(() => setStep((n) => n + 1), step === 0 ? 400 : INTRO_STEP_MS)
     return () => clearTimeout(timer)
   }, [step, total])
@@ -128,17 +145,15 @@ export default function JaioraLanding() {
   const goToCity = (i: number) => navigate(to(`/location/${CITY_CHATS[i].slug}`))
   const c = t(JAIORA)
   const [activeCity, setActiveCity] = useState<number | null>(null)
-  const [showIntro, setShowIntro] = useState(() => {
-    try {
-      return !localStorage.getItem(INTRO_KEY)
-    } catch {
-      return false
-    }
-  })
+  // Готовый HTML собран без заставки: первый проход в браузере совпадает с ним (серверный снимок false),
+  // и только после оживления страницы заставка решает, показываться ли
+  const hydrated = useSyncExternalStore(noopSubscribe, () => true, () => false)
+  const firstVisit = useSyncExternalStore(noopSubscribe, isFirstVisit, () => false)
+  const [dismissed, setDismissed] = useState(false)
   // Клик по «Jaiora» в шапке передаёт state.intro — каждый такой переход запускает заставку заново
   const location = useLocation()
   const replayKey = (location.state as { intro?: boolean } | null)?.intro ? location.key : null
-  const introVisible = showIntro || replayKey !== null
+  const introVisible = hydrated && ((firstVisit && !dismissed) || replayKey !== null)
 
   const storyPhase = c.story.reduce<number[]>((acc, item, i) => {
     acc.push(item.phase ? (i === 0 ? 0 : acc[i - 1] + 1) : (acc[i - 1] ?? 0))
@@ -156,7 +171,7 @@ export default function JaioraLanding() {
             } catch {
               /* приватный режим — просто не повторяем в рамках вкладки */
             }
-            setShowIntro(false)
+            setDismissed(true)
             // Снимаем флаг из истории, чтобы перезагрузка страницы не проигрывала заставку снова
             if (replayKey) navigate(location.pathname, { replace: true, state: null })
           }}
@@ -175,7 +190,7 @@ export default function JaioraLanding() {
       <section className="s-meet">
         <div>
           <p className="s-meet-when">{c.meet.when}</p>
-          <p className="s-meet-title">{c.meet.title}</p>
+          <h2 className="s-meet-title">{c.meet.title}</h2>
         </div>
         <p className="s-meet-text">{c.meet.text}</p>
         <div className="s-meet-cities">
@@ -272,6 +287,8 @@ export default function JaioraLanding() {
         <h2 className="s-h2">{c.helpTitle}</h2>
         <Tiles items={c.help} />
       </section>
+
+      <Faq title={t(FAQ_TITLE)} items={homeFaq(lang)} />
       </Page>
     </>
   )
