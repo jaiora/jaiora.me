@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState, useSyncExternalStore } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Page from '@/components/site/Page'
 import { CityChips } from '@/components/site/Chips'
@@ -9,6 +9,7 @@ import type { Place } from '@/data/places'
 import PlacesMap from '@/components/site/PlacesMap'
 import Faq from '@/components/site/Faq'
 import { FAQ_TITLE, homeFaq } from '@/data/faq'
+import { useHydrated } from '@/lib/dates'
 
 // Города чатов на карте: названия и порядок — из списка чатов
 const CITY_PLACES: Place[] = CITY_CHATS.map((c) => ({
@@ -18,109 +19,78 @@ const CITY_PLACES: Place[] = CITY_CHATS.map((c) => ({
   color: c.status ? STATUS_META[c.status].color : undefined,
 }))
 
-// В заставке точки загораются с востока на запад, все одним фирменным цветом — статусы тут не показываем
-const INTRO_PLACES: Place[] = [...CITY_PLACES].sort((a, b) => b.lon - a.lon).map((p) => ({ ...p, color: undefined }))
+// Карта первого экрана: точки загораются с востока на запад, все одним фирменным цветом — статусы на карте ниже
+const HERO_PLACES: Place[] = [...CITY_PLACES].sort((a, b) => b.lon - a.lon).map((p) => ({ ...p, color: undefined }))
 
 const PHASE_CLASS = ['ph-me', 'ph-together', 'ph-people', 'ph-jaiora']
 
-// Анимация точек на карте показываем только первому визиту — дальше не повторяем
-const INTRO_KEY = 'jaiora-intro-seen'
-const noopSubscribe = () => () => {}
-// Поисковым и ИИ-роботам заставку не показываем: полноэкранный слой поверх контента поисковики штрафуют
-const BOT_RE = /Googlebot|bingbot|YandexBot|Baiduspider|DuckDuckBot|Slurp|facebookexternalhit|Twitterbot|LinkedInBot|TelegramBot|GPTBot|ClaudeBot|PerplexityBot|Applebot|bot|crawl|spider|headless/i
-function isFirstVisit() {
-  if (BOT_RE.test(navigator.userAgent)) return false
-  try {
-    return !localStorage.getItem(INTRO_KEY)
-  } catch {
-    return false
-  }
-}
-const INTRO_STEP_MS = 900
-const INTRO_HOLD_MS = 2500
+// Вся анимация первого экрана — 2 секунды: точки за 1,6 с (+0,4 с на проявление последней), счётчики за то же время
+const HERO_MS = 2000
+const HERO_STEP_MS = 1600 / HERO_PLACES.length
 
-const INTRO_T = {
-  title: { ru: 'Свои люди в каждом городе', en: 'Your people in every city' },
-  count: { ru: 'локаций', en: 'locations' },
-  when: { ru: 'встречи каждую субботу · 19:00', en: 'meetups every Saturday · 7 pm' },
-  close: { ru: 'Закрыть', en: 'Close' },
+const HERO_T = {
+  locations: { ru: 'локаций', en: 'locations' },
   people: { ru: 'человек в сообществе', en: 'people in the community' },
   goal: { ru: 'цель', en: 'goal' },
 }
 
-// Число плавно бежит от 0 до target за durationMs (с замедлением к концу)
-function useCountUp(target: number, durationMs: number) {
-  const [value, setValue] = useState(0)
+const reducedMotion = () => typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches
+
+// Число бежит от 0 до target к моменту startedAt + HERO_MS (с замедлением к концу).
+// В готовом HTML и при первом проходе оживления — сразу target, чтобы разметка совпала и роботы видели итог
+function useCountUp(target: number, run: boolean, startedAt: number) {
+  const [value, setValue] = useState<number | null>(null)
+  const animate = run && !reducedMotion()
   useEffect(() => {
+    if (!animate) return
     let raf = 0
+    const duration = Math.max(600, startedAt + HERO_MS - performance.now())
     const start = performance.now()
     const tick = (now: number) => {
-      const p = Math.min((now - start) / durationMs, 1)
+      const p = Math.min((now - start) / duration, 1)
       setValue(Math.round(target * (1 - Math.pow(1 - p, 3))))
       if (p < 1) raf = requestAnimationFrame(tick)
     }
     raf = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(raf)
-  }, [target, durationMs])
-  return value
+  }, [target, animate, startedAt])
+  return value ?? (animate ? 0 : target)
 }
 
-function IntroOverlay({ onDone }: { onDone: () => void }) {
+// fromLoad — первый показ при загрузке страницы: точки уже анимирует CSS с начала загрузки, счётчики догоняют их к 2 с;
+// при повторном показе (клик по «Jaiora») отсчёт идёт от момента пересоздания карты
+function HeroMap({ fromLoad }: { fromLoad: boolean }) {
   const { t, lang } = useT()
-  const [leaving, setLeaving] = useState(false)
-  const people = useCountUp(NETWORK.people, INTRO_PLACES.length * INTRO_STEP_MS)
+  const [startedAt] = useState(() => (fromLoad || typeof performance === 'undefined' ? 0 : performance.now()))
+  const hydrated = useHydrated()
+  const cities = useCountUp(HERO_PLACES.length, hydrated, startedAt)
+  const people = useCountUp(NETWORK.people, hydrated, startedAt)
   const fmt = (n: number) => n.toLocaleString(lang === 'ru' ? 'ru-RU' : 'en-US')
-  // step: сколько городов уже зажглось; лишний шаг в конце снимает подпись с последнего города
-  const [step, setStep] = useState(0)
-  const total = INTRO_PLACES.length
-  const lit = Math.min(step, total)
-  const current = step >= 1 && step <= total ? step - 1 : null
-
-  useEffect(() => {
-    if (step > total) {
-      const timer = setTimeout(() => setLeaving(true), INTRO_HOLD_MS)
-      return () => clearTimeout(timer)
-    }
-    const timer = setTimeout(() => setStep((n) => n + 1), step === 0 ? 400 : INTRO_STEP_MS)
-    return () => clearTimeout(timer)
-  }, [step, total])
-
-  useEffect(() => {
-    if (!leaving) return
-    const t = setTimeout(onDone, 300)
-    return () => clearTimeout(t)
-  }, [leaving, onDone])
-
   return (
-    <div className={`s-intro site site-jaiora${leaving ? ' is-leaving' : ''}`}>
-      <button type="button" className="s-intro-close" aria-label={t(INTRO_T.close)} onClick={() => setLeaving(true)}>
-        ×
-      </button>
-      <div className="s-intro-head">
-        <p className="s-eyebrow">Jaiora</p>
-        <p className="s-intro-title">{t(INTRO_T.title)}</p>
-        <p className="s-intro-stat">
-          <span className="s-intro-count">{lit}</span> {t(INTRO_T.count)} · {t(INTRO_T.when)}
-        </p>
-      </div>
+    <div className={`s-hero-map${hydrated ? ' is-live' : ''}`}>
       <PlacesMap
-        places={INTRO_PLACES.slice(0, lit)}
-        label={{ ru: 'Локации Jaiora', en: 'Jaiora locations' }}
-        active={current}
+        places={HERO_PLACES}
+        label={{ ru: 'Локации Jaiora на карте мира', en: 'Jaiora locations on the world map' }}
+        active={null}
         onActive={() => {}}
         sequential
-        sequentialStepMs={0}
+        sequentialStepMs={HERO_STEP_MS}
       />
-      <div className="s-intro-people">
-        <p className="s-intro-people-num">
-          <span>{fmt(people)}</span> {t(INTRO_T.people)}
+      <div className="s-hero-stats">
+        <p className="s-hero-stat">
+          <span className="s-hero-num">{cities}</span> {t(HERO_T.locations)}
         </p>
-        <div className="s-intro-bar" aria-hidden="true">
-          <div className="s-intro-bar-fill" style={{ width: `${(people / NETWORK.goalPeople) * 100}%` }} />
+        <div className="s-hero-people">
+          <p className="s-hero-stat">
+            <span className="s-hero-num">{fmt(people)}</span> {t(HERO_T.people)}
+          </p>
+          <div className="s-hero-bar" aria-hidden="true">
+            <div className="s-hero-bar-fill" style={{ width: `${(people / NETWORK.goalPeople) * 100}%` }} />
+          </div>
+          <p className="s-hero-goal">
+            {t(HERO_T.goal)} {NETWORK.goalYear} · {fmt(NETWORK.goalPeople)}
+          </p>
         </div>
-        <p className="s-intro-goal">
-          {t(INTRO_T.goal)} {NETWORK.goalYear} · {fmt(NETWORK.goalPeople)}
-        </p>
       </div>
     </div>
   )
@@ -145,15 +115,8 @@ export default function JaioraLanding() {
   const goToCity = (i: number) => navigate(to(`/location/${CITY_CHATS[i].slug}`))
   const c = t(JAIORA)
   const [activeCity, setActiveCity] = useState<number | null>(null)
-  // Готовый HTML собран без заставки: первый проход в браузере совпадает с ним (серверный снимок false),
-  // и только после оживления страницы заставка решает, показываться ли
-  const hydrated = useSyncExternalStore(noopSubscribe, () => true, () => false)
-  const firstVisit = useSyncExternalStore(noopSubscribe, isFirstVisit, () => false)
-  const [dismissed, setDismissed] = useState(false)
-  // Клик по «Jaiora» в шапке передаёт state.intro — каждый такой переход запускает заставку заново
+  // Клик по «Jaiora» в шапке — новый переход: карта пересоздаётся и анимация играет заново
   const location = useLocation()
-  const replayKey = (location.state as { intro?: boolean } | null)?.intro ? location.key : null
-  const introVisible = hydrated && ((firstVisit && !dismissed) || replayKey !== null)
 
   const storyPhase = c.story.reduce<number[]>((acc, item, i) => {
     acc.push(item.phase ? (i === 0 ? 0 : acc[i - 1] + 1) : (acc[i - 1] ?? 0))
@@ -162,29 +125,15 @@ export default function JaioraLanding() {
 
   return (
     <>
-      {introVisible && (
-        <IntroOverlay
-          key={replayKey ?? 'first'}
-          onDone={() => {
-            try {
-              localStorage.setItem(INTRO_KEY, '1')
-            } catch {
-              /* приватный режим — просто не повторяем в рамках вкладки */
-            }
-            setDismissed(true)
-            // Снимаем флаг из истории, чтобы перезагрузка страницы не проигрывала заставку снова
-            if (replayKey) navigate(location.pathname, { replace: true, state: null })
-          }}
-        />
-      )}
       <Page>
-      <header className="s-jhero">
+      <header className="s-jhero has-map">
         <img className="s-jlogo" src="/logo.svg" alt="Jaiora" width="112" height="112" />
         <div>
           <p className="s-eyebrow">{c.eyebrow}</p>
           <h1 className="s-jtitle">{c.title}</h1>
           <p className="s-lead">{c.lead}</p>
         </div>
+        <HeroMap key={location.key} fromLoad={location.key === 'default'} />
       </header>
 
       <section className="s-meet">
