@@ -105,7 +105,8 @@ export default function LocationView() {
               className="s-meet-photo"
               src={city.story.photo.src}
               alt={t(city.story.photo.alt)}
-              loading="lazy"
+              fetchPriority="high"
+              decoding="async"
               style={{ aspectRatio: city.story.photo.aspect }}
             />
           </button>

@@ -85,8 +85,9 @@
 a.s-nav-link { color: var(--ink-2); font-size: var(--t-small); font-weight: 600; padding: 4px 0; }
 a.s-nav-link:hover, a.s-nav-link.is-active { color: var(--ink); }
 a.s-nav-link.is-active { box-shadow: 0 2px 0 var(--accent); }
-a.s-nav-lang { font-family: var(--mono); font-size: var(--t-label); color: var(--ink-2); border: 1px solid var(--line-2); border-radius: var(--radius); padding: 2px 8px; }
-a.s-nav-lang:hover { color: var(--ink); border-color: var(--accent); }
+/* Переключатель языка — мягкая зелёная капсула в тон знаку, без серой рамки */
+a.s-nav-lang { font-size: var(--t-label); font-weight: 700; letter-spacing: 0.04em; color: var(--status-autonomous); background: color-mix(in srgb, var(--accent) 12%, transparent); border-radius: 999px; padding: 3px 11px; transition: background 0.15s, color 0.15s; }
+a.s-nav-lang:hover { color: var(--on-accent); background: var(--accent); }
 
 /* ---------- 3. Типографика ---------- */
 .s-eyebrow { margin: 0; font-family: var(--mono); font-size: var(--t-label); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
@@ -95,7 +96,7 @@ a.s-nav-lang:hover { color: var(--ink); border-color: var(--accent); }
 .s-lead a, .s-faq-a a, .s-step-text a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
 
 /* Раздел: жирная линия сверху, номер, заголовок */
-.s-section { display: flex; flex-direction: column; gap: var(--sp-3); border-top: 2px solid var(--line-strong); padding-top: var(--sp-3); counter-increment: sec; }
+.s-section { display: flex; flex-direction: column; gap: var(--sp-3); border-top: 1px solid var(--line); padding-top: var(--sp-3); counter-increment: sec; }
 .s-section::before { content: counter(sec, decimal-leading-zero); font-family: var(--mono); font-size: var(--t-label); letter-spacing: 0.1em; color: var(--accent); }
 .s-label { margin: 0; font-family: var(--mono); font-size: var(--t-label); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
 h3.s-label { margin-top: var(--sp-2); padding-bottom: var(--sp-1); border-bottom: 1px solid var(--line); }
@@ -132,26 +133,29 @@ a.s-card:hover .s-card-title { color: var(--accent); }
 .s-pill, .s-chip {
   display: inline-flex; align-items: center;
   padding: 9px 16px;
-  border: 1px solid var(--line-2);
-  border-radius: var(--radius);
-  background: none;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 9%, transparent);
   color: var(--ink);
   font-size: var(--t-small);
   font-weight: 600;
   transition: border-color 0.15s, color 0.15s, background 0.15s;
 }
 .s-pill { font-family: var(--mono); font-weight: 500; }
-a.s-pill:hover, a.s-chip:hover { border-color: var(--accent); color: var(--accent); }
+/* Капсулы в тон знаку: мягкая зелёная заливка вместо серой рамки */
+a.s-pill:hover, a.s-chip:hover { background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--status-autonomous); }
 .s-chip-static { cursor: default; color: var(--ink-2); }
-.s-chip-status { width: 8px; height: 8px; margin-left: 8px; border-radius: 50%; flex: none; }
+/* Статус — кольцо, как головы в знаке */
+.s-chip-status, .s-status-dot { -webkit-mask: radial-gradient(circle, transparent 2.1px, #000 2.6px); mask: radial-gradient(circle, transparent 2.1px, #000 2.6px); }
+.s-chip-status { width: 10px; height: 10px; margin-left: 8px; border-radius: 50%; flex: none; }
 
 .s-status-legend { display: flex; flex-wrap: wrap; column-gap: var(--sp-3); row-gap: 4px; margin: 4px 0 var(--sp-1); font-size: var(--t-label); color: var(--ink-3); }
 .s-status-legend-item { display: inline-flex; align-items: center; gap: 6px; cursor: default; }
 .s-status-line { margin: 4px 0 0; font-weight: 600; color: var(--ink-2); }
-.s-status-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
-.s-chip.is-active { border-color: var(--accent); color: var(--ink); }
+.s-status-dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.s-chip.is-active { background: color-mix(in srgb, var(--accent) 22%, transparent); color: var(--ink); }
 /* Специфичность как у «.site a» / «a.s-pill:hover» выше — иначе они перебивают белый цвет текста кнопки */
-a.s-pill-solid, .s-pill-solid { background: var(--accent); border-color: var(--accent); color: var(--on-accent); cursor: pointer; }
+a.s-pill-solid, .s-pill-solid { background: var(--accent); border-color: var(--accent); color: var(--on-accent); cursor: pointer; font-family: var(--font); font-weight: 700; padding: 11px 22px; }
 a.s-pill-solid:hover, .s-pill-solid:hover { background: var(--accent); color: var(--on-accent); opacity: 0.88; }
 
 /* Карта городов */
@@ -164,7 +168,7 @@ a.s-pill-solid:hover, .s-pill-solid:hover { background: var(--accent); color: va
 .s-map-pin.is-active .s-map-halo { opacity: 0.45; r: 8; }
 .s-map-label { fill: var(--ink); font-family: var(--mono); font-size: 5px; paint-order: stroke; stroke: var(--bg); stroke-width: 1.5px; }
 /* Ключевые города */
-.s-chip.is-key { border-color: var(--accent); color: var(--ink); font-weight: 700; }
+.s-chip.is-key { background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--ink); font-weight: 700; }
 .s-map-pin.is-key .s-map-halo { opacity: 0.35; }
 /* Текущая локация на её собственной странице — крупнее; цвет свой (по статусу), если есть, иначе акцентный */
 .s-map-pin.is-current .s-map-halo { fill: var(--pin-color, var(--me)); opacity: 0.45; }
@@ -213,7 +217,8 @@ a.s-pill-solid:hover, .s-pill-solid:hover { background: var(--accent); color: va
 .s-jtitle { margin: 0; font-size: var(--t-h1); font-weight: 800; line-height: 1.02; letter-spacing: -0.045em; }
 
 /* Баннер встреч: главный факт страницы */
-.s-meet { display: grid; grid-template-columns: 1fr; gap: var(--sp-2); padding: var(--sp-4) var(--sp-3); border: 2px solid var(--accent); border-radius: var(--radius); background: var(--surface); }
+/* Карточка встречи в тон знаку: мягкая зелёная заливка и скругления вместо жёсткой рамки */
+.s-meet { display: grid; grid-template-columns: 1fr; gap: var(--sp-2); padding: var(--sp-4) var(--sp-3); border: 1.5px solid color-mix(in srgb, var(--accent) 38%, transparent); border-radius: 22px; background: color-mix(in srgb, var(--accent) 13%, var(--surface)); }
 .s-meet.has-photo { display: flex; flex-wrap: wrap; gap: var(--sp-4); align-items: flex-start; }
 .s-meet.has-photo > .s-meet-body { flex: 1 1 280px; display: flex; flex-direction: column; gap: var(--sp-2); }
 .s-meet-photo-btn { flex: 0 0 280px; width: 280px; display: block; padding: 0; border: none; background: none; cursor: zoom-in; }
@@ -252,16 +257,20 @@ a.s-pill-solid:hover, .s-pill-solid:hover { background: var(--accent); color: va
 .s-step-text { color: var(--ink-2); hyphens: auto; }
 /* Все метки и линия центрируются по одной оси --rail, поэтому не разъезжаются при смене размеров */
 .s-timeline { --rail: -27px; }
-.s-step::after, .s-phase::after { content: ''; position: absolute; left: var(--rail); top: 0; bottom: 0; width: 2px; transform: translateX(-50%); background: var(--ph, var(--line-2)); opacity: 0.35; }
+/* Хроника в духе знака: линия — стебель, отметки — кольца-головы, как у людей в логотипе */
+.s-step::after, .s-phase::after { content: ''; position: absolute; left: var(--rail); top: 0; bottom: 0; width: 10px; transform: translateX(-50%); background: var(--ph, var(--line-2)); opacity: 0.7;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 100' preserveAspectRatio='none'%3E%3Cpath d='M3.50 0 L3.53 4 L3.60 8 L3.72 12 L3.87 16 L4.05 20 L4.25 24 L4.45 28 L4.64 32 L4.81 36 L4.95 40 L5.04 44 L5.09 48 L5.09 52 L5.04 56 L4.95 60 L4.81 64 L4.64 68 L4.45 72 L4.25 76 L4.05 80 L3.87 84 L3.72 88 L3.60 92 L3.53 96 L3.50 100 L6.50 100 L6.53 96 L6.60 92 L6.72 88 L6.87 84 L7.05 80 L7.25 76 L7.45 72 L7.64 68 L7.81 64 L7.95 60 L8.04 56 L8.09 52 L8.09 48 L8.04 44 L7.95 40 L7.81 36 L7.64 32 L7.45 28 L7.25 24 L7.05 20 L6.87 16 L6.72 12 L6.60 8 L6.53 4 L6.50 0Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 100' preserveAspectRatio='none'%3E%3Cpath d='M3.50 0 L3.53 4 L3.60 8 L3.72 12 L3.87 16 L4.05 20 L4.25 24 L4.45 28 L4.64 32 L4.81 36 L4.95 40 L5.04 44 L5.09 48 L5.09 52 L5.04 56 L4.95 60 L4.81 64 L4.64 68 L4.45 72 L4.25 76 L4.05 80 L3.87 84 L3.72 88 L3.60 92 L3.53 96 L3.50 100 L6.50 100 L6.53 96 L6.60 92 L6.72 88 L6.87 84 L7.05 80 L7.25 76 L7.45 72 L7.64 68 L7.81 64 L7.95 60 L8.04 56 L8.09 52 L8.09 48 L8.04 44 L7.95 40 L7.81 36 L7.64 32 L7.45 28 L7.25 24 L7.05 20 L6.87 16 L6.72 12 L6.60 8 L6.53 4 L6.50 0Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+/* Изгибы чередуются, как наклоны людей в знаке; на стыках линия всегда вертикальна, поэтому без изломов */
+.s-timeline > li:nth-child(even)::after { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 100' preserveAspectRatio='none'%3E%3Cpath d='M3.50 0 L3.47 4 L3.40 8 L3.28 12 L3.13 16 L2.95 20 L2.75 24 L2.55 28 L2.36 32 L2.19 36 L2.05 40 L1.96 44 L1.91 48 L1.91 52 L1.96 56 L2.05 60 L2.19 64 L2.36 68 L2.55 72 L2.75 76 L2.95 80 L3.13 84 L3.28 88 L3.40 92 L3.47 96 L3.50 100 L6.50 100 L6.47 96 L6.40 92 L6.28 88 L6.13 84 L5.95 80 L5.75 76 L5.55 72 L5.36 68 L5.19 64 L5.05 60 L4.96 56 L4.91 52 L4.91 48 L4.96 44 L5.05 40 L5.19 36 L5.36 32 L5.55 28 L5.75 24 L5.95 20 L6.13 16 L6.28 12 L6.40 8 L6.47 4 L6.50 0Z'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 100' preserveAspectRatio='none'%3E%3Cpath d='M3.50 0 L3.47 4 L3.40 8 L3.28 12 L3.13 16 L2.95 20 L2.75 24 L2.55 28 L2.36 32 L2.19 36 L2.05 40 L1.96 44 L1.91 48 L1.91 52 L1.96 56 L2.05 60 L2.19 64 L2.36 68 L2.55 72 L2.75 76 L2.95 80 L3.13 84 L3.28 88 L3.40 92 L3.47 96 L3.50 100 L6.50 100 L6.47 96 L6.40 92 L6.28 88 L6.13 84 L5.95 80 L5.75 76 L5.55 72 L5.36 68 L5.19 64 L5.05 60 L4.96 56 L4.91 52 L4.91 48 L4.96 44 L5.05 40 L5.19 36 L5.36 32 L5.55 28 L5.75 24 L5.95 20 L6.13 16 L6.28 12 L6.40 8 L6.47 4 L6.50 0Z'/%3E%3C/svg%3E"); }
 .s-step::before, .s-phase::before { content: ''; position: absolute; left: var(--rail); transform: translate(-50%, -50%); border-radius: 50%; z-index: 1; }
 .s-phase { --phase-pt: var(--sp-3); position: relative; margin: 0; padding: var(--phase-pt) 0 var(--sp-1); font-family: var(--mono); font-size: var(--t-label); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ph, var(--accent)); }
 /* Шаг — маленькая сплошная точка; кольцо цвета фона отрезает линию вокруг неё */
-.s-step::before { top: 31px; width: 8px; height: 8px; background: var(--ph, var(--line-2)); box-shadow: 0 0 0 4px var(--bg); }
+.s-step::before { top: 31px; width: 13px; height: 13px; box-sizing: border-box; border: 3px solid var(--ph, var(--line-2)); background: var(--bg); box-shadow: 0 0 0 3px var(--bg); }
 /* Этап — «станция»: кольцо с точкой внутри, по центру строки подписи */
-.s-phase::before { top: calc(var(--phase-pt) + 0.66rem); width: 16px; height: 16px; border: 2px solid var(--ph, var(--accent)); background: radial-gradient(circle, var(--ph, var(--accent)) 0 3px, var(--bg) 3.5px); }
+.s-phase::before { top: calc(var(--phase-pt) + 0.66rem); width: 20px; height: 20px; box-sizing: border-box; border: 4px solid var(--ph, var(--accent)); background: var(--bg); box-shadow: 0 0 0 3px var(--bg); }
 .s-step-year { color: var(--ph, var(--accent)); }
-.s-step-now::before { width: 12px; height: 12px; box-shadow: 0 0 0 4px var(--bg), 0 0 0 7px color-mix(in srgb, var(--ph, var(--accent)) 25%, transparent); }
-.s-step-goal::before { width: 12px; height: 12px; background: var(--bg); border: 2px dashed var(--ph, var(--accent)); }
+.s-step-now::before { width: 16px; height: 16px; border-width: 4px; box-shadow: 0 0 0 3px var(--bg), 0 0 0 7px color-mix(in srgb, var(--ph, var(--accent)) 25%, transparent); }
+.s-step-goal::before { width: 16px; height: 16px; background: var(--bg); border: 3px dashed var(--ph, var(--accent)); }
 .s-step-goal .s-step-name { color: var(--ph, var(--accent)); }
 .s-step-pre .s-step-text { opacity: 0.85; }
 .ph-me { --ph: var(--me, #e2551b); }

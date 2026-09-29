@@ -74,9 +74,11 @@ const urls = indexable.map((p) => {
     ? p.alternates.map((a) => `<xhtml:link rel="alternate" hreflang="${a.lang}" href="${urlOf(a.path)}"/>`).join('') +
       `<xhtml:link rel="alternate" hreflang="x-default" href="${urlOf(p.alternates.find((a) => a.lang === 'ru').path)}"/>`
     : ''
-  return `  <url><loc>${urlOf(p.path)}</loc><lastmod>${p.date ?? gitDate(p.sources)}</lastmod><priority>${priority(p)}</priority>${alt}</url>`
+  // Фото со встречи (не общая картинка превью) — отдельной записью, чтобы оно попало в поиск по картинкам
+  const photo = p.image && !/\/og(\.en)?\.png$/.test(p.image) ? `<image:image><image:loc>${SITE_URL}${p.image}</image:loc></image:image>` : ''
+  return `  <url><loc>${urlOf(p.path)}</loc><lastmod>${p.date ?? gitDate(p.sources)}</lastmod><priority>${priority(p)}</priority>${alt}${photo}</url>`
 })
-write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`)
+write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls.join('\n')}\n</urlset>\n`)
 
 // robots.txt: обычные и ИИ-краулеры разрешены явно
 const AI_BOTS = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-User', 'Claude-SearchBot', 'anthropic-ai', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Applebot-Extended', 'CCBot', 'Amazonbot', 'meta-externalagent', 'cohere-ai', 'YandexAdditional', 'YandexGPT']

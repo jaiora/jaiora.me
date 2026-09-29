@@ -20,15 +20,21 @@ const HOME_Q = {
 
 // Смысл знака — единственный ответ, которого нет в тексте главной
 const LOGO_A = {
-  ru: 'Знак показывает людей, которые оказались в одном месте. Внутри все на равных: у всех одинаковые головы, но каждый стоит по-своему, и одни уже рядом, а другие только подходят. Ещё один огибает их снизу и собирает в круг, как человек, который встречает новичка в незнакомом городе и знакомит со своими. Его линия заканчивается завитком тайской буквы «จ» из слова «ใจ» (jai), «сердце», от которого произошло название. Зелёный цвет — рост сообщества, которое держится на доверии.',
-  en: 'The mark shows people who have ended up in the same place. Inside, everyone is equal: the heads are the same, but each person stands in their own way, some already close and some just arriving. One more person curves around them from below and gathers them into a circle, like someone who meets a newcomer in an unfamiliar city and introduces them to friends. That line ends in the curl of the Thai letter «จ» from «ใจ» (jai), “heart”, which gave Jaiora its name. The green stands for a community that grows on trust.',
+  ru: 'В знаке люди, которые оказались в одной комнате. Все они разные: кто-то уже рядом, кто-то только подошёл, и никто не стоит выше других. Одна линия огибает их снизу и обнимает. Для каждого это тот самый нужный человек, который найдётся под любую задачу, а для всех вместе — сообщество, которое держит своих. Линия заканчивается завитком тайской буквы «จ» из слова «ใจ» (jai), «сердце», отсюда и название. Зелёный — цвет того, что растёт само, когда люди доверяют друг другу.',
+  en: 'The mark shows people who have ended up in the same room. They are all different: some are already close, some have just arrived, and no one stands above the rest. One line curves around them from below and holds them close. For each of them it is the right person who exists for any task, and for all of them together it is a community that looks after its own. The line ends in the curl of the Thai letter «จ» from «ใจ» (jai), “heart”, which gave Jaiora its name. Green is the colour of things that grow on their own when people trust each other.',
+}
+
+// Чем «оффлайн» отличается от обычного LinkedIn
+const OFFLINE = {
+  ru: 'Связи здесь появляются на живых встречах, где люди видят друг друга и разговаривают, без кнопки «Connect» на сайте.',
+  en: 'Connections here come from meeting in person, seeing each other and talking, with no “Connect” button on a website.',
 }
 
 // Остальные ответы — дословно из контента главной, без новых утверждений
 export function homeFaq(lang: Lang): FaqItem[] {
   const c = JAIORA[lang]
   return [
-    { q: HOME_Q.what[lang], a: `${c.eyebrow}. ${c.lead}` },
+    { q: HOME_Q.what[lang], a: `${c.eyebrow}. ${OFFLINE[lang]} ${c.lead}` },
     { q: HOME_Q.logo[lang], a: LOGO_A[lang] },
     { q: HOME_Q.when[lang], a: `${c.meet.when}. ${c.meet.title}. ${c.meet.text}` },
     { q: HOME_Q.who[lang], a: c.rules[0].text },

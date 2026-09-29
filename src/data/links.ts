@@ -126,6 +126,11 @@ export const CITY_CHATS: CityChat[] = [
           en: 'We’ve been meeting since January 2025 — one of the oldest locations in the network: started at Sinori, then an Irish pub, then SushiGO. After a pause over the winter of 2026, the tradition restarted in May, and since September, Saturdays are run by Natalie and Ksenia.',
         },
       },
+      photo: {
+        src: '/batumi-meetup.jpg',
+        alt: { ru: 'Трое участников субботней встречи Jaiora в баре в Батуми', en: 'Three people at a Saturday Jaiora meetup in a bar in Batumi' },
+        aspect: '1280 / 853',
+      },
       updated: '2026-09-29',
       paragraph: {
         ru: [
@@ -183,6 +188,11 @@ export const CITY_CHATS: CityChat[] = [
           ru: 'Встречаемся с января 2025-го — раньше почти каждую неделю в NU ARROWS Caffe&Restaurant, а с апреля того же года и по сей день — на пляже, в WiWi Beach Coffee & Food. Больше пятидесяти суббот подряд, без единого настоящего перерыва.',
           en: 'We’ve been meeting since January 2025 — first almost every week at NU ARROWS Caffe&Restaurant, then from April that same year to today, on the beach at WiWi Beach Coffee & Food. More than fifty Saturdays running, without a real break.',
         },
+      },
+      photo: {
+        src: '/danang-beach.jpg',
+        alt: { ru: 'Субботняя встреча Jaiora за длинным столом на ночном пляже в Дананге', en: 'A Saturday Jaiora meetup at a long table on the beach at night in Da Nang' },
+        aspect: '3 / 4',
       },
       updated: '2026-09-28',
       paragraph: {
@@ -267,7 +277,7 @@ export const CITY_CHATS: CityChat[] = [
       },
       photo: {
         src: '/bangkok-rooftop.jpg',
-        alt: { ru: 'Встреча Jaiora на руфтопе в Бангкоке', en: 'A Jaiora meetup on a rooftop in Bangkok' },
+        alt: { ru: 'Встреча Jaiora за длинным столом на руфтопе с видом на ночной Бангкок', en: 'A Jaiora meetup at a long table on a rooftop overlooking Bangkok at night' },
         aspect: '3 / 4',
       },
       updated: '2026-09-28',
@@ -309,6 +319,11 @@ export const CITY_CHATS: CityChat[] = [
           ru: 'Встречаемся с ноября 2025-го: начинали раз в две недели на закате в Бераве, потом Джимбаран и Убуд по очереди. С конца мая 2026-го собираемся по субботам в одном месте — Ju Bali в Чангу.',
           en: 'We’ve been meeting since November 2025: started every two weeks at sunset in Berawa, then Jimbaran and Ubud in turn. Since late May 2026, we’ve met every Saturday at one place — Ju Bali in Changu.',
         },
+      },
+      photo: {
+        src: '/bali-meetup.jpg',
+        alt: { ru: 'Участники Jaiora за круглым столом в шатре на субботней встрече на Бали', en: 'Jaiora members around a round table in a tent at a Saturday meetup in Bali' },
+        aspect: '4 / 3',
       },
       updated: '2026-09-28',
       paragraph: {
@@ -373,6 +388,11 @@ export const CITY_CHATS: CityChat[] = [
           en: 'We’ve been meeting since December 2025: the first meetup was at a private beach resort. After a pause and a failed relaunch attempt in April, the community came back in June 2026 — first at We Cafe, then from the third meetup on, since June 27, at Sala Mexicali Phuket Town. In August a few meetups moved to Greek Kitchen by Chalong Bay, and in September they returned to Sala Mexicali.',
         },
       },
+      photo: {
+        src: '/phuket-meetup.jpg',
+        alt: { ru: 'Вечерняя встреча Jaiora в уютном зале на Пхукете', en: 'An evening Jaiora meetup in a cosy room in Phuket' },
+        aspect: '993 / 1280',
+      },
       updated: '2026-09-28',
       paragraph: {
         ru: [
@@ -415,6 +435,11 @@ export const CITY_CHATS: CityChat[] = [
           ru: 'Встречались с октября 2024-го — суббота в коливинге, потом бар, бильярд. С лета 2025-го регулярных встреч не было; сейчас чат живёт скорее как доска объявлений для IT-Алматы.',
           en: 'We met from October 2024 — Saturday at a coworking, then a bar, then billiards. There haven’t been regular meetups since summer 2025; these days the chat runs more as a bulletin board for IT in Almaty.',
         },
+      },
+      photo: {
+        src: '/almaty-meetup.jpg',
+        alt: { ru: 'Участники встречи Jaiora за столом в баре в Алматы', en: 'People at a Jaiora meetup at a table in a bar in Almaty' },
+        aspect: '16 / 9',
       },
       updated: '2026-09-28',
       paragraph: {
@@ -462,7 +487,7 @@ export const CITY_CHATS: CityChat[] = [
       },
       photo: {
         src: '/piter-meetup.jpg',
-        alt: { ru: 'Встреча Jaiora в Санкт-Петербурге', en: 'A Jaiora meetup in Saint Petersburg' },
+        alt: { ru: 'Участники встречи Jaiora за общим столом в кафе в Санкт-Петербурге', en: 'People at a Jaiora meetup around a shared table in a café in Saint Petersburg' },
         aspect: '4 / 3',
       },
       updated: '2026-09-28',
@@ -500,6 +525,11 @@ export const CITY_CHATS: CityChat[] = [
           ru: 'Встречались по субботам с марта по июль 2025-го — Leman Cafe, потом ирландский паб. С тех пор регулярного места нет: собираются от случая к случаю, когда получается договориться.',
           en: 'We met every Saturday from March to July 2025 — Leman Cafe, then an Irish pub. There’s been no regular spot since: people get together ad hoc, whenever it comes together.',
         },
+      },
+      photo: {
+        src: '/antalya-meetup.jpg',
+        alt: { ru: 'Участники встречи Jaiora за кофе в кафе в Анталье', en: 'People at a Jaiora meetup over coffee in a café in Antalya' },
+        aspect: '4 / 3',
       },
       updated: '2026-09-29',
       paragraph: {
