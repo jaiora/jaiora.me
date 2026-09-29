@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import Page from '@/components/site/Page'
 import { CityChips } from '@/components/site/Chips'
 import { CITY_CHATS, STATUS_META, STATUS_ORDER, itemText } from '@/data/links'
-import { JAIORA, NETWORK, type Tile } from '@/data/jaiora'
+import { JAIORA, NETWORK, type Story, type Tile } from '@/data/jaiora'
 import { useT } from '@/lib/i18n'
 import type { Place } from '@/data/places'
 import PlacesMap from '@/components/site/PlacesMap'
@@ -109,6 +109,20 @@ function Tiles({ items }: { items: Tile[] }) {
   )
 }
 
+// Одно слово в тексте шага хроники можно сделать ссылкой (например, GetMentor)
+function withLink(s: Story) {
+  if (!s.link) return s.text
+  const [before, ...rest] = s.text.split(s.link.word)
+  if (!rest.length) return s.text
+  return (
+    <>
+      {before}
+      <a href={s.link.href} target="_blank" rel="noopener noreferrer">{s.link.word}</a>
+      {rest.join(s.link.word)}
+    </>
+  )
+}
+
 export default function JaioraLanding() {
   const { lang, t, to } = useT()
   const navigate = useNavigate()
@@ -196,7 +210,7 @@ export default function JaioraLanding() {
                   {s.title}
                   {s.year && <span className="s-step-year">{s.year}</span>}
                 </span>
-                <span className="s-step-text">{s.text}</span>
+                <span className="s-step-text">{withLink(s)}</span>
               </li>
             </Fragment>
           ))}

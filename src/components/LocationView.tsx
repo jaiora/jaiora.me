@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useRef, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Page from '@/components/site/Page'
 import PlacesMap from '@/components/site/PlacesMap'
 import { CityChips } from '@/components/site/Chips'
@@ -20,8 +20,6 @@ const CITY_PLACES: Place[] = CITY_CHATS.map((c) => ({
 }))
 
 const T = {
-  back: { ru: '← Все локации', en: '← All locations' },
-  eyebrow: { ru: 'Jaiora', en: 'Jaiora' },
   joinChat: { ru: 'Открыть чат в Telegram ↗', en: 'Open the Telegram chat ↗' },
   meetWhen: { ru: 'Как и в большинстве локаций Jaiora', en: 'Like in most Jaiora locations' },
   otherCities: { ru: 'Другие локации', en: 'Other locations' },
@@ -76,12 +74,7 @@ export default function LocationView() {
   return (
     <Page>
       <header className="s-jhero">
-        <img className="s-jlogo" src="/logo.svg" alt="Jaiora" width="112" height="112" />
         <div>
-          <p className="s-eyebrow">{t(T.eyebrow)} · {name}</p>
-          <p className="s-back">
-            <Link to={to('/locations')}>{t(T.back)}</Link>
-          </p>
           <h1 className="s-jtitle">{name}</h1>
           {city.status && (
             <p className="s-status-legend-item s-status-line" title={t(STATUS_META[city.status].hint)}>

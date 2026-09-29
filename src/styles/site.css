@@ -78,6 +78,8 @@
 /* Шапка */
 .s-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sp-2) var(--sp-3); padding-bottom: var(--sp-2); border-bottom: 1px solid var(--line); }
 .s-nav-home { font-weight: 800; letter-spacing: -0.01em; }
+.s-nav-home { display: inline-flex; align-items: center; gap: 8px; }
+.s-nav-mark { width: 30px; height: auto; }
 .s-nav nav { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-1) var(--sp-3); }
 /* a. — та же специфичность, что у «.site a» выше, иначе оно перебивает цвет ссылки */
 a.s-nav-link { color: var(--ink-2); font-size: var(--t-small); font-weight: 600; padding: 4px 0; }
@@ -90,7 +92,7 @@ a.s-nav-lang:hover { color: var(--ink); border-color: var(--accent); }
 .s-eyebrow { margin: 0; font-family: var(--mono); font-size: var(--t-label); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
 .s-h2 { margin: 0; font-size: var(--t-h2); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
 .s-lead { margin: 0; font-size: var(--t-lead); line-height: 1.55; color: var(--ink-2); hyphens: auto; }
-.s-lead a, .s-faq-a a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.s-lead a, .s-faq-a a, .s-step-text a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
 
 /* Раздел: жирная линия сверху, номер, заголовок */
 .s-section { display: flex; flex-direction: column; gap: var(--sp-3); border-top: 2px solid var(--line-strong); padding-top: var(--sp-3); counter-increment: sec; }
@@ -175,7 +177,7 @@ a.s-pill-solid:hover, .s-pill-solid:hover { background: var(--accent); color: va
 /* Карта первого экрана: точки и счётчики за 2 секунды. На широком экране — справа от заголовка, чтобы анимацию было видно сразу */
 /* Первый экран без вычурности: спокойный заголовок, обычный текст, больше места карте */
 .s-jhero.has-map { gap: var(--sp-2); }
-.s-jhero.has-map > .s-jlogo { width: 44px; height: 44px; }
+.s-jhero.has-map > .s-jlogo { width: 64px; height: 53px; }
 .s-jhero.has-map > div:not(.s-hero-map) { gap: var(--sp-2); }
 .s-jhero.has-map .s-jtitle { font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 700; line-height: 1.18; letter-spacing: -0.02em; }
 .s-jhero.has-map .s-lead { font-size: var(--t-body); text-align: left; }
@@ -207,7 +209,7 @@ a.s-pill-solid:hover, .s-pill-solid:hover { background: var(--accent); color: va
 .s-back { margin: 0; font-size: var(--t-small); }
 .s-back a { color: var(--ink-3); }
 .s-back a:hover { color: var(--accent); }
-.s-jlogo { width: 64px; height: 64px; }
+.s-jlogo { width: 84px; height: 69px; }
 .s-jtitle { margin: 0; font-size: var(--t-h1); font-weight: 800; line-height: 1.02; letter-spacing: -0.045em; }
 
 /* Баннер встреч: главный факт страницы */

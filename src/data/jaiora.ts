@@ -1,6 +1,6 @@
 import type { L } from '@/lib/i18n'
 
-export interface Story { title: string; year?: string; text: string; pre?: boolean; phase?: string; group?: string; goal?: boolean }
+export interface Story { title: string; year?: string; text: string; link?: { word: string; href: string }; pre?: boolean; phase?: string; group?: string; goal?: boolean }
 export interface Tile { title: string; text: string }
 
 export interface JaioraContent {
@@ -56,7 +56,7 @@ const ru: JaioraContent = {
   storyBy: { lead: 'Рассказывает ', name: 'Егор Урванов', href: 'https://www.urvanov.com/', tail: ', основатель Jaiora' },
   story: [
     { title: 'Люди', year: '2016 и раньше', pre: true, group: 'До сообществ', phase: 'До 2022 · Егор учится работать с людьми', text: 'В МАИ и других сообществах я много работал с людьми: собирал, учил, организовывал, ошибался.' },
-    { title: 'GetMentor', year: '2022', pre: true, text: 'Стал топ-1 ментором на GetMentor. Там я понял, как важны нетворк и умение работать с людьми.' },
+    { title: 'GetMentor', year: '2022', pre: true, text: 'Стал топ-1 ментором на GetMentor. Там я понял, как важны нетворк и умение работать с людьми.', link: { word: 'GetMentor', href: 'https://getmentor.dev/' } },
     { title: 'Отъезд', year: '2022', group: 'Сообщества', phase: 'С 2022 · Егор собирает людей', text: 'В 2022-м многие вдруг очень полюбили путешествовать. Я тоже уехал, в Бангкок.' },
     { title: 'Неудача', year: '2023', text: 'Первое сообщество, которое я собрал вокруг своего кондо, развалилось.' },
     { title: 'Гипотеза', text: 'Я не бросил. Верил, что переезд даётся легче, если на новом месте тебя кто-то встречает.' },
@@ -107,7 +107,7 @@ const en: JaioraContent = {
   storyBy: { lead: 'Told by ', name: 'Egor Urvanov', href: 'https://www.urvanov.com/', tail: ', founder of Jaiora' },
   story: [
     { title: 'People', year: '2016 and earlier', pre: true, group: 'Before the communities', phase: 'Before 2022 · Egor learns to work with people', text: 'At MAI and other communities I worked with people a lot: gathering, teaching, organizing, making mistakes.' },
-    { title: 'GetMentor', year: '2022', pre: true, text: 'Became the top-1 mentor on GetMentor. There I understood how important networking and working with people are.' },
+    { title: 'GetMentor', year: '2022', pre: true, text: 'Became the top-1 mentor on GetMentor. There I understood how important networking and working with people are.', link: { word: 'GetMentor', href: 'https://getmentor.dev/' } },
     { title: 'Leaving', year: '2022', group: 'The communities', phase: 'Since 2022 · Egor brings people together', text: 'In 2022 many people suddenly fell in love with travel. I left too, to Bangkok.' },
     { title: 'Failure', year: '2023', text: 'The first community I built around my condo fell apart.' },
     { title: 'Hypothesis', text: 'I did not give up. I believed relocation is easier when someone meets you at the new place.' },

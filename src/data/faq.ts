@@ -10,6 +10,7 @@ export interface FaqItem {
 // Одни и те же вопросы видны на странице и уходят в разметку FAQPage: Google учитывает разметку, только если текст виден
 const HOME_Q = {
   what: { ru: 'Что такое Jaiora?', en: 'What is Jaiora?' },
+  logo: { ru: 'Что означает логотип Jaiora?', en: 'What does the Jaiora logo mean?' },
   when: { ru: 'Когда и где проходят встречи?', en: 'When and where are the meetups?' },
   who: { ru: 'Кто может прийти и сколько это стоит?', en: 'Who can come and how much does it cost?' },
   rules: { ru: 'Какие правила в сообществе?', en: 'What are the community rules?' },
@@ -17,11 +18,18 @@ const HOME_Q = {
   cities: { ru: 'В каких городах есть Jaiora?', en: 'Which cities is Jaiora in?' },
 }
 
-// Ответы — дословно из контента главной, без новых утверждений
+// Смысл знака — единственный ответ, которого нет в тексте главной
+const LOGO_A = {
+  ru: 'Знак показывает людей, которые оказались в одном месте. Внутри все на равных: у всех одинаковые головы, но каждый стоит по-своему, и одни уже рядом, а другие только подходят. Ещё один огибает их снизу и собирает в круг, как человек, который встречает новичка в незнакомом городе и знакомит со своими. Его линия заканчивается завитком тайской буквы «จ» из слова «ใจ» (jai), «сердце», от которого произошло название. Зелёный цвет — рост сообщества, которое держится на доверии.',
+  en: 'The mark shows people who have ended up in the same place. Inside, everyone is equal: the heads are the same, but each person stands in their own way, some already close and some just arriving. One more person curves around them from below and gathers them into a circle, like someone who meets a newcomer in an unfamiliar city and introduces them to friends. That line ends in the curl of the Thai letter «จ» from «ใจ» (jai), “heart”, which gave Jaiora its name. The green stands for a community that grows on trust.',
+}
+
+// Остальные ответы — дословно из контента главной, без новых утверждений
 export function homeFaq(lang: Lang): FaqItem[] {
   const c = JAIORA[lang]
   return [
     { q: HOME_Q.what[lang], a: `${c.eyebrow}. ${c.lead}` },
+    { q: HOME_Q.logo[lang], a: LOGO_A[lang] },
     { q: HOME_Q.when[lang], a: `${c.meet.when}. ${c.meet.title}. ${c.meet.text}` },
     { q: HOME_Q.who[lang], a: c.rules[0].text },
     { q: HOME_Q.rules[lang], a: `${c.rulesLead} ${c.rules.map((r) => `${r.title}: ${r.text}`).join(' ')}` },

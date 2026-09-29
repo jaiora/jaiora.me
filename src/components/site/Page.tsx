@@ -12,7 +12,10 @@ export default function Page({ children }: { children: ReactNode }) {
     <div className="site site-jaiora">
       <div className="s-wrap">
         <header className="s-nav">
-          <Link to={to('/')} className="s-nav-home">Jaiora</Link>
+          <Link to={to('/')} className="s-nav-home">
+            <img className="s-nav-mark" src="/logo.svg" alt="" width="30" height="25" />
+            Jaiora
+          </Link>
           <nav aria-label={t({ ru: 'Разделы', en: 'Sections' })}>
             {NAV_ITEMS.map((i) => (
               <NavLink key={i.to} to={to(i.to)} className={({ isActive }) => `s-nav-link${isActive ? ' is-active' : ''}`}>
