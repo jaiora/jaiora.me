@@ -141,7 +141,7 @@ export default function JaioraLanding() {
     <>
       <Page>
       <header className="s-jhero has-map">
-        <img className="s-jlogo" src="/logo.svg" alt="Jaiora" width="112" height="112" />
+        <img className="s-jlogo" src="/logo.svg?v=2" alt="Jaiora" width="112" height="112" />
         <div>
           <p className="s-eyebrow">{c.eyebrow}</p>
           <h1 className="s-jtitle">{c.title}</h1>

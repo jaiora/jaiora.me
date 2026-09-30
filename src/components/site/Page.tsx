@@ -13,7 +13,7 @@ export default function Page({ children }: { children: ReactNode }) {
       <div className="s-wrap">
         <header className="s-nav">
           <Link to={to('/')} className="s-nav-home">
-            <img className="s-nav-mark" src="/logo.svg" alt="" width="30" height="25" />
+            <img className="s-nav-mark" src="/logo.svg?v=2" alt="" width="30" height="25" />
             Jaiora
           </Link>
           <nav aria-label={t({ ru: 'Разделы', en: 'Sections' })}>

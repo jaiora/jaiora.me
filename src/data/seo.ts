@@ -50,7 +50,7 @@ export function organization(lang: Lang): Node {
         ? `Offline LinkedIn: a networking community and meetups. Every task and goal has a person who can help — we help you find them and meet in person. ${NETWORK.people.toLocaleString('en-US')} members across ${CITY_CHATS.length} cities today, with a ${NETWORK.goalYear} goal of 30 cities and ${NETWORK.goalPeople.toLocaleString('en-US')} members.`
         : `Оффлайн-LinkedIn: сообщество нетворкинга и встречи вживую. У любой задачи и цели есть человек, который поможет её решить — мы помогаем его найти и встретиться. Сейчас ${NETWORK.people.toLocaleString('ru-RU')} участников в ${CITY_CHATS.length} городах, цель на ${NETWORK.goalYear} год — 30 городов и ${NETWORK.goalPeople.toLocaleString('ru-RU')} участников.`,
     url: urlOf(withLang('/', lang)),
-    logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.svg`, width: 100, height: 100 },
+    logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.svg?v=2`, width: 100, height: 100 },
     image: `${SITE_URL}${ogImage(lang)}`,
     foundingDate: '2026',
     founder: { '@type': 'Person', '@id': FOUNDER_ID, name: lang === 'en' ? 'Egor Urvanov' : 'Егор Урванов', url: 'https://www.urvanov.com/' },
