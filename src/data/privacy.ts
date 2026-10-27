@@ -76,8 +76,8 @@ export const PROCESSORS: Processor[] = [
   },
   {
     name: 'OpenAI',
-    role: { ru: 'Искусственный интеллект: ответы на вопросы, расшифровка голоса, разбор сообщений об ошибках и чатов, подбор людей', en: 'Artificial intelligence: answering questions, voice transcription, analysing bug reports and chats, matching people' },
-    data: { ru: 'Текст вопросов и сообщений, голосовые сообщения, резюме и сведения о профессиональном опыте', en: 'Text of questions and messages, voice messages, CVs and professional background' },
+    role: { ru: 'Искусственный интеллект: ответы на вопросы, расшифровка голоса, разбор сообщений об ошибках и чатов, профили участников, подбор людей, голосовые собеседования', en: 'Artificial intelligence: answering questions, voice transcription, analysing bug reports and chats, member profiles, matching people, voice interviews' },
+    data: { ru: 'Текст вопросов и сообщений, сообщения в чатах, голос (в том числе на собеседованиях), резюме и сведения о профессиональном опыте', en: 'Text of questions and messages, chat messages, voice (including interviews), CVs and professional background' },
     where: { ru: 'США', en: 'United States' },
   },
   {
@@ -124,10 +124,15 @@ export const PRIVACY: PrivacySection[] = [
       p('Политика распространяется на:', 'This policy applies to:'),
       list(
         ['сайт jaiora.me;', 'the jaiora.me website;'],
-        ['чаты и ботов Jaiora в Telegram;', 'Jaiora chats and bots on Telegram;'],
-        ['встречи и запись докладов: сервис meetup.jaiora.me и расширение для браузера «Jaiora Meetup»;', 'meetups and talk recording: the meetup.jaiora.me service and the “Jaiora Meetup” browser extension;'],
-        ['инструменты поддержки: сообщения об ошибках и вопросы о работе сервисов;', 'support tools: bug reports and questions about how the services work;'],
-        ['сервисы подбора людей, включая поиск работы и кандидатов.', 'people-matching services, including job and candidate search.'],
+        ['чаты Jaiora в Telegram и их модерацию (Moodbot);', 'Jaiora chats on Telegram and their moderation (Moodbot);'],
+        ['кабинет сообщества crm.jaiora.me и единый вход в сервисы auth.jaiora.me;', 'the community dashboard crm.jaiora.me and single sign-on auth.jaiora.me;'],
+        ['доску города board.jaiora.me и бота встреч;', 'the city board board.jaiora.me and the meetup bot;'],
+        ['запись докладов на встречах: сервис meetup.jaiora.me и расширение для браузера «Jaiora Meetup»;', 'recording talks at meetups: the meetup.jaiora.me service and the “Jaiora Meetup” browser extension;'],
+        ['заметки по встречам notetaker.jaiora.me;', 'meeting notes notetaker.jaiora.me;'],
+        ['«Рядом» (@JaioraBot) — запросы и предложения участников и подбор пар;', '“Ryadom” (@JaioraBot) — members’ requests and offers and matching them;'],
+        ['подбор людей и найм: факты о кандидатах facts.jaiora.me, профили участников по их сообщениям в чатах whoiswho.jaiora.me, помощник рекрутера clarify.jaiora.me, голосовой бот для собеседований;', 'people matching and hiring: candidate facts facts.jaiora.me, member profiles based on their chat messages whoiswho.jaiora.me, the recruiter assistant clarify.jaiora.me and a voice interview bot;'],
+        ['поддержку во всех сервисах: сообщения об ошибках и вопросы о работе сервисов (tracker.jaiora.me);', 'support in all services: bug reports and questions about how the services work (tracker.jaiora.me);'],
+        ['другие сервисы Jaiora, которые ссылаются на эту политику.', 'any other Jaiora service that links to this policy.'],
       ),
       p(
         'Jaiora не является юридическим лицом. Ответственный за обработку данных указан в разделе «Контакты».',
@@ -163,8 +168,8 @@ export const PRIVACY: PrivacySection[] = [
     title: { ru: 'Искусственный интеллект', en: 'Artificial intelligence' },
     blocks: [
       p(
-        'Часть функций Jaiora работает с помощью моделей искусственного интеллекта сторонних поставщиков (перечислены в разделе «Кому передаются данные»): ответы на вопросы о сервисах, расшифровка голосовых сообщений, разбор сообщений об ошибках, подбор людей под задачу.',
-        'Some Jaiora features use artificial intelligence models from third-party providers (listed in “Who receives your data”): answering questions about the services, transcribing voice messages, analysing bug reports and matching people to tasks.',
+        'Часть функций Jaiora работает с помощью моделей искусственного интеллекта сторонних поставщиков (перечислены в разделе «Кому передаются данные»): ответы на вопросы о сервисах, расшифровка голосовых сообщений, разбор сообщений об ошибках, модерация чатов, составление профилей участников по их сообщениям, подбор людей под задачу, голосовые собеседования.',
+        'Some Jaiora features use artificial intelligence models from third-party providers (listed in “Who receives your data”): answering questions about the services, transcribing voice messages, analysing bug reports, moderating chats, building member profiles from their messages, matching people to tasks and voice interviews.',
       ),
       list(
         ['Ответы, созданные искусственным интеллектом, мы помечаем как таковые.', 'Answers generated by artificial intelligence are labelled as such.'],
