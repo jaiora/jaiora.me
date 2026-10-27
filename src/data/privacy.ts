@@ -54,8 +54,8 @@ export const PRIVACY: PrivacySection[] = [
         'To the extent Jaiora services handle data themselves, this is information members share about themselves or publish in the communities, meetup materials, messages sent to us and technical data needed to run the services.',
       ),
       p(
-        'Мы используем эти данные, чтобы сообщество и его сервисы работали, развивались и были защищены, а также когда этого требует закон.',
-        'We use this data to run, improve and protect the community and its services, and where required by law.',
+        'Мы используем эти данные, чтобы сообщество и его сервисы работали, развивались и были защищены. Мы делаем это с вашего согласия, чтобы выполнить то, о чём вы просите, в разумных интересах сообщества или когда этого требует закон.',
+        'We use this data to run, improve and protect the community and its services. We do so with your consent, to do what you ask of us, in the reasonable interests of the community, or where required by law.',
       ),
     ],
   },
@@ -108,8 +108,8 @@ export const PRIVACY: PrivacySection[] = [
     title: { ru: 'Сайт', en: 'Website' },
     blocks: [
       p(
-        'Сайт Jaiora не использует файлы cookie, счётчики посещений и рекламные метки.',
-        'The Jaiora website does not use cookies, visitor analytics or advertising tags.',
+        'Сайт Jaiora не использует файлы cookie, счётчики посещений и рекламные метки. Сайт не отслеживает посетителей, поэтому настройка браузера «Не отслеживать» не меняет его работу.',
+        'The Jaiora website does not use cookies, visitor analytics or advertising tags. The site does not track visitors, so a browser “Do Not Track” setting does not change how it works.',
       ),
     ],
   },
