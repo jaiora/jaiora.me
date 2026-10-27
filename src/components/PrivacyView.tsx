@@ -1,15 +1,10 @@
 import Page from '@/components/site/Page'
-import { PRIVACY, PROCESSORS, PURPOSES, PRIVACY_TELEGRAM, PRIVACY_UPDATED, type PrivacyBlock } from '@/data/privacy'
+import { PRIVACY, PRIVACY_TELEGRAM, PRIVACY_UPDATED, type PrivacyBlock } from '@/data/privacy'
 import { useT } from '@/lib/i18n'
 
 const T = {
   title: { ru: 'Политика конфиденциальности', en: 'Privacy Policy' },
   updated: { ru: 'Редакция от', en: 'Last updated' },
-  purpose: { ru: 'Цель', en: 'Purpose' },
-  basis: { ru: 'Основание', en: 'Legal basis' },
-  service: { ru: 'Сервис', en: 'Service' },
-  role: { ru: 'Для чего', en: 'Used for' },
-  data: { ru: 'Какие данные', en: 'Data' },
   controller: { ru: 'Ответственный за обработку данных: Егор Урванов.', en: 'Data controller: Egor Urvanov.' },
   write: { ru: 'Вопросы и запросы о данных — в Telegram', en: 'Questions and data requests — on Telegram' },
 }
@@ -24,25 +19,7 @@ function Block({ b }: { b: PrivacyBlock }) {
       </p>
     )
   }
-  if (b.kind === 'list') return <ul>{b.items.map((i, n) => <li key={n}>{t(i)}</li>)}</ul>
-  if (b.kind === 'purposes') {
-    return (
-      <div className="s-table-wrap">
-        <table className="s-table">
-          <thead><tr><th>{t(T.purpose)}</th><th>{t(T.basis)}</th></tr></thead>
-          <tbody>{PURPOSES.map((p, n) => <tr key={n}><td>{t(p.purpose)}</td><td>{t(p.basis)}</td></tr>)}</tbody>
-        </table>
-      </div>
-    )
-  }
-  return (
-    <div className="s-table-wrap">
-      <table className="s-table">
-        <thead><tr><th>{t(T.service)}</th><th>{t(T.role)}</th><th>{t(T.data)}</th></tr></thead>
-        <tbody>{PROCESSORS.map((p) => <tr key={p.name}><td>{p.name}</td><td>{t(p.role)}</td><td>{t(p.data)}</td></tr>)}</tbody>
-      </table>
-    </div>
-  )
+  return <ul>{b.items.map((i, n) => <li key={n}>{t(i)}</li>)}</ul>
 }
 
 export default function PrivacyView() {
