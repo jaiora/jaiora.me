@@ -134,6 +134,10 @@ const STATIC_TEXT = {
     ru: { title: 'Политика конфиденциальности — Jaiora', description: 'Какие данные обрабатывают сервисы Jaiora, зачем, кому передаются, сколько хранятся и как реализовать свои права.' },
     en: { title: 'Privacy Policy — Jaiora', description: 'What data Jaiora’s services process, why, who receives it, how long it is kept and how to exercise your rights.' },
   },
+  terms: {
+    ru: { title: 'Условия использования — Jaiora', description: 'Условия использования сайта, сообществ и сервисов Jaiora: поведение, знакомства и встречи, ответственность.' },
+    en: { title: 'Terms of Use — Jaiora', description: 'Terms of use for the Jaiora website, communities and services: conduct, introductions and meetups, liability.' },
+  },
   home: {
     ru: { title: 'Jaiora — оффлайн-LinkedIn: находим человека под задачу и знакомим вживую', description: 'Jaiora — сообщество и встречи: у любой задачи и цели есть человек, который поможет. Помогаем его найти и встретиться вживую. 11 локаций, 10 000 человек.' },
     en: { title: 'Jaiora — offline LinkedIn: we find the right person and introduce you in person', description: 'Jaiora is a community and meetups: every task and goal has a person who can help. We help you find them and meet in person. 11 locations, 10,000 people.' },
@@ -146,6 +150,7 @@ const CRUMB = {
   blog: { ru: 'Блог', en: 'Blog' },
   team: { ru: 'Команда', en: 'Team' },
   privacy: { ru: 'Конфиденциальность', en: 'Privacy' },
+  terms: { ru: 'Условия', en: 'Terms' },
 }
 
 // Описание локации: реальные факты из баннера истории, если он есть, иначе общий текст
@@ -268,6 +273,16 @@ export function allPages(): PageMeta[] {
       ...m,
       sources: ['src/components/PrivacyView.tsx', 'src/data/privacy.ts'],
       crumbs: [{ name: CRUMB.privacy[lang], path }],
+      jsonLd: [webPage('WebPage', path, lang, m.title, m.description)],
+    }
+  })
+
+  add('/terms', (lang, path) => {
+    const m = STATIC_TEXT.terms[lang]
+    return {
+      ...m,
+      sources: ['src/components/TermsView.tsx', 'src/data/terms.ts'],
+      crumbs: [{ name: CRUMB.terms[lang], path }],
       jsonLd: [webPage('WebPage', path, lang, m.title, m.description)],
     }
   })
