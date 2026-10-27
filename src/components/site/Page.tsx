@@ -29,7 +29,7 @@ export default function Page({ children }: { children: ReactNode }) {
         </header>
         <main className="s-main">{children}</main>
         <footer className="s-foot">
-          <small>© {new Date().getFullYear()} Jaiora</small>
+          <small>© {new Date().getFullYear()} Jaiora · <Link to={to('/privacy')}>{t({ ru: 'Конфиденциальность', en: 'Privacy' })}</Link></small>
         </footer>
       </div>
     </div>

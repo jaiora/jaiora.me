@@ -332,3 +332,12 @@ a.s-pill-solid:hover, .s-pill-solid:hover { background: var(--accent); color: va
   .s-sticky-cta .s-pill { width: 100%; justify-content: center; }
   .s-main:has(.s-sticky-cta) { padding-bottom: 72px; }
 }
+
+/* Политика конфиденциальности: списки и таблицы в тексте */
+.s-legal ul { margin: 0 0 1.1em; padding-left: 1.2em; }
+.s-legal li { margin: 0 0 0.4em; }
+.s-foot a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.s-table-wrap { overflow-x: auto; margin: 0 0 1.1em; }
+.s-table { width: 100%; border-collapse: collapse; font-size: var(--t-small); line-height: 1.5; }
+.s-table th, .s-table td { text-align: left; vertical-align: top; padding: 8px 10px; border-top: 1px solid var(--line); }
+.s-table th { font-weight: 600; color: var(--ink-2); border-top: 0; }
