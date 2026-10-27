@@ -15,7 +15,7 @@ function Block({ b }: { b: PrivacyBlock }) {
   if (b.kind === 'contact') {
     return (
       <p>
-        {t(T.controller)} {t(T.write)} <a href={`https://t.me/${PRIVACY_TELEGRAM}`} target="_blank" rel="noopener noreferrer">@{PRIVACY_TELEGRAM}</a>.
+        {t(T.controller)} {t(T.write)} @{PRIVACY_TELEGRAM}.
       </p>
     )
   }
