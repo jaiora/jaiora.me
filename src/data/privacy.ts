@@ -5,7 +5,6 @@
 import type { L } from '@/lib/i18n'
 
 export const PRIVACY_UPDATED = '2026-10-28'
-export const PRIVACY_CONTACT = 'e.s.urvanov@urvanov.com'
 export const PRIVACY_TELEGRAM = 'eurvanov'
 
 export type PrivacyBlock =
@@ -72,7 +71,7 @@ export const PROCESSORS: Processor[] = [
   },
   {
     name: 'Cloudflare',
-    role: { ru: 'Защита и доставка трафика сайтов *.jaiora.me', en: 'Protection and delivery of traffic to *.jaiora.me sites' },
+    role: { ru: 'Защита и доставка трафика сайтов Jaiora', en: 'Protection and delivery of traffic to Jaiora sites' },
     data: { ru: 'IP-адрес, сведения о браузере, содержимое запросов к сайтам', en: 'IP address, browser details, contents of requests to the sites' },
     where: { ru: 'Глобальная сеть, США', en: 'Global network, United States' },
   },
@@ -102,7 +101,7 @@ export const PROCESSORS: Processor[] = [
   },
   {
     name: 'GitHub',
-    role: { ru: 'Размещение сайта jaiora.me', en: 'Hosting of the jaiora.me website' },
+    role: { ru: 'Размещение сайта Jaiora', en: 'Hosting of the Jaiora website' },
     data: { ru: 'IP-адрес и сведения о браузере посетителей', en: 'Visitors’ IP address and browser details' },
     where: { ru: 'США', en: 'United States' },
   },
@@ -125,15 +124,12 @@ export const PRIVACY: PrivacySection[] = [
       ),
       p('Политика распространяется на:', 'This policy applies to:'),
       list(
-        ['сайт jaiora.me;', 'the jaiora.me website;'],
-        ['чаты Jaiora в Telegram и их модерацию (Moodbot);', 'Jaiora chats on Telegram and their moderation (Moodbot);'],
-        ['кабинет сообщества crm.jaiora.me и единый вход в сервисы auth.jaiora.me;', 'the community dashboard crm.jaiora.me and single sign-on auth.jaiora.me;'],
-        ['доску города board.jaiora.me и бота встреч;', 'the city board board.jaiora.me and the meetup bot;'],
-        ['запись докладов на встречах: сервис meetup.jaiora.me и расширение для браузера «Jaiora Meetup»;', 'recording talks at meetups: the meetup.jaiora.me service and the “Jaiora Meetup” browser extension;'],
-        ['заметки по встречам notetaker.jaiora.me;', 'meeting notes notetaker.jaiora.me;'],
-        ['«Рядом» (@JaioraBot) — запросы и предложения участников и подбор пар;', '“Ryadom” (@JaioraBot) — members’ requests and offers and matching them;'],
-        ['подбор людей и найм: факты о кандидатах facts.jaiora.me, профили участников по их сообщениям в чатах whoiswho.jaiora.me, помощник рекрутера clarify.jaiora.me, голосовой бот для собеседований;', 'people matching and hiring: candidate facts facts.jaiora.me, member profiles based on their chat messages whoiswho.jaiora.me, the recruiter assistant clarify.jaiora.me and a voice interview bot;'],
-        ['поддержку во всех сервисах: сообщения об ошибках и вопросы о работе сервисов (tracker.jaiora.me);', 'support in all services: bug reports and questions about how the services work (tracker.jaiora.me);'],
+        ['сайт Jaiora;', 'the Jaiora website;'],
+        ['чаты сообщества в Telegram и их модерацию;', 'community chats on Telegram and their moderation;'],
+        ['кабинет сообщества и вход в сервисы;', 'the community dashboard and sign-in;'],
+        ['сервисы для встреч: доска города, бот встреч, запись докладов (включая расширение для браузера), заметки по встречам;', 'meetup services: the city board, the meetup bot, talk recording (including the browser extension) and meeting notes;'],
+        ['сервисы знакомств и подбора людей, включая поиск работы, найм и собеседования;', 'introduction and people-matching services, including job search, hiring and interviews;'],
+        ['поддержку во всех сервисах: сообщения об ошибках и вопросы о работе сервисов;', 'support in all services: bug reports and questions about how the services work;'],
         ['другие сервисы Jaiora, которые ссылаются на эту политику.', 'any other Jaiora service that links to this policy.'],
       ),
       p(

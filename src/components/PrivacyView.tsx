@@ -1,5 +1,5 @@
 import Page from '@/components/site/Page'
-import { PRIVACY, PROCESSORS, PURPOSES, PRIVACY_CONTACT, PRIVACY_TELEGRAM, PRIVACY_UPDATED, type PrivacyBlock } from '@/data/privacy'
+import { PRIVACY, PROCESSORS, PURPOSES, PRIVACY_TELEGRAM, PRIVACY_UPDATED, type PrivacyBlock } from '@/data/privacy'
 import { useT } from '@/lib/i18n'
 
 const T = {
@@ -13,7 +13,6 @@ const T = {
   where: { ru: 'Где', en: 'Location' },
   controller: { ru: 'Ответственный за обработку данных: Егор Урванов.', en: 'Data controller: Egor Urvanov.' },
   write: { ru: 'Вопросы и запросы о данных — в Telegram', en: 'Questions and data requests — on Telegram' },
-  mail: { ru: 'или на почту', en: 'or by email' },
 }
 
 function Block({ b }: { b: PrivacyBlock }) {
@@ -22,7 +21,7 @@ function Block({ b }: { b: PrivacyBlock }) {
   if (b.kind === 'contact') {
     return (
       <p>
-        {t(T.controller)} {t(T.write)} <a href={`https://t.me/${PRIVACY_TELEGRAM}`} target="_blank" rel="noopener noreferrer">@{PRIVACY_TELEGRAM}</a> {t(T.mail)} <a href={`mailto:${PRIVACY_CONTACT}`}>{PRIVACY_CONTACT}</a>.
+        {t(T.controller)} {t(T.write)} <a href={`https://t.me/${PRIVACY_TELEGRAM}`} target="_blank" rel="noopener noreferrer">@{PRIVACY_TELEGRAM}</a>.
       </p>
     )
   }
