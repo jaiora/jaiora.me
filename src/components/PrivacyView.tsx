@@ -1,5 +1,5 @@
 import Page from '@/components/site/Page'
-import { PRIVACY, PROCESSORS, PURPOSES, PRIVACY_UPDATED, type PrivacyBlock } from '@/data/privacy'
+import { PRIVACY, PROCESSORS, PURPOSES, PRIVACY_CONTACT, PRIVACY_TELEGRAM, PRIVACY_UPDATED, type PrivacyBlock } from '@/data/privacy'
 import { useT } from '@/lib/i18n'
 
 const T = {
@@ -11,11 +11,21 @@ const T = {
   role: { ru: 'Для чего', en: 'Used for' },
   data: { ru: 'Какие данные', en: 'Data' },
   where: { ru: 'Где', en: 'Location' },
+  controller: { ru: 'Ответственный за обработку данных: Егор Урванов.', en: 'Data controller: Egor Urvanov.' },
+  write: { ru: 'Вопросы и запросы о данных — в Telegram', en: 'Questions and data requests — on Telegram' },
+  mail: { ru: 'или на почту', en: 'or by email' },
 }
 
 function Block({ b }: { b: PrivacyBlock }) {
   const { t } = useT()
   if (b.kind === 'p') return <p>{t(b.text)}</p>
+  if (b.kind === 'contact') {
+    return (
+      <p>
+        {t(T.controller)} {t(T.write)} <a href={`https://t.me/${PRIVACY_TELEGRAM}`} target="_blank" rel="noopener noreferrer">@{PRIVACY_TELEGRAM}</a> {t(T.mail)} <a href={`mailto:${PRIVACY_CONTACT}`}>{PRIVACY_CONTACT}</a>.
+      </p>
+    )
+  }
   if (b.kind === 'list') return <ul>{b.items.map((i, n) => <li key={n}>{t(i)}</li>)}</ul>
   if (b.kind === 'purposes') {
     return (

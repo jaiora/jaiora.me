@@ -6,12 +6,14 @@ import type { L } from '@/lib/i18n'
 
 export const PRIVACY_UPDATED = '2026-10-28'
 export const PRIVACY_CONTACT = 'e.s.urvanov@urvanov.com'
+export const PRIVACY_TELEGRAM = 'eurvanov'
 
 export type PrivacyBlock =
   | { kind: 'p'; text: L }
   | { kind: 'list'; items: L[] }
   | { kind: 'purposes' }
   | { kind: 'processors' }
+  | { kind: 'contact' }
 
 export interface PrivacySection {
   id: string
@@ -197,8 +199,8 @@ export const PRIVACY: PrivacySection[] = [
         'Data may also be shared with: the meetup organiser — recordings and details needed to run the meetup; other members — what you posted in a chat yourself or agreed to share for an introduction; public authorities — only where required by law.',
       ),
       p(
-        'Мы не продаём данные и не передаём их для рекламы, брокерам данных или для оценки кредитоспособности.',
-        'We do not sell personal data and do not share it for advertising, with data brokers or for credit assessment.',
+        'В сообществах Jaiora нет рекламы и спонсорских размещений, и это принцип: сообщество не продаётся — ни доступ к участникам, ни их внимание, ни их данные. Мы не продаём данные, не передаём их рекламодателям и брокерам данных и не используем для рекламы или оценки кредитоспособности.',
+        'There is no advertising or sponsored content in Jaiora communities, and this is a principle: the community is not for sale — not access to its members, not their attention, not their data. We do not sell personal data, do not share it with advertisers or data brokers and do not use it for advertising or credit assessment.',
       ),
     ],
   },
@@ -242,8 +244,8 @@ export const PRIVACY: PrivacySection[] = [
         ['подать жалобу в орган по защите данных своей страны.', 'lodge a complaint with the data protection authority of your country.'],
       ),
       p(
-        'Напишите на адрес из раздела «Контакты». Мы ответим в течение 30 дней. Мы не ухудшаем условия для тех, кто воспользовался своими правами.',
-        'Write to the address in the “Contact” section. We will reply within 30 days. We do not treat anyone less favourably for exercising their rights.',
+        `Напишите в Telegram @${PRIVACY_TELEGRAM}. Мы ответим в течение 30 дней. Мы не ухудшаем условия для тех, кто воспользовался своими правами.`,
+        `Message @${PRIVACY_TELEGRAM} on Telegram. We will reply within 30 days. We do not treat anyone less favourably for exercising their rights.`,
       ),
     ],
   },
@@ -252,8 +254,8 @@ export const PRIVACY: PrivacySection[] = [
     title: { ru: 'Для жителей США', en: 'For U.S. residents' },
     blocks: [
       p(
-        'Мы не продаём персональные данные и не передаём их для поведенческой рекламы. Жители Калифорнии и других штатов с законами о защите данных имеют права, описанные в разделе «Ваши права». Сайт jaiora.me не отслеживает посетителей, поэтому сигнал браузера «Не отслеживать» (Do Not Track) не меняет его работу.',
-        'We do not sell personal information or share it for cross-context behavioural advertising. Residents of California and other states with privacy laws have the rights described in “Your rights”. The jaiora.me website does not track visitors, so a browser “Do Not Track” signal does not change how it works.',
+        'Мы не продаём персональные данные и не передаём их для поведенческой рекламы — рекламы в сообществах Jaiora нет вообще. Жители Калифорнии и других штатов с законами о защите данных имеют права, описанные в разделе «Ваши права». Сайт jaiora.me не отслеживает посетителей, поэтому сигнал браузера «Не отслеживать» (Do Not Track) не меняет его работу.',
+        'We do not sell personal information or share it for cross-context behavioural advertising — there is no advertising in Jaiora communities at all. Residents of California and other states with privacy laws have the rights described in “Your rights”. The jaiora.me website does not track visitors, so a browser “Do Not Track” signal does not change how it works.',
       ),
     ],
   },
@@ -272,7 +274,7 @@ export const PRIVACY: PrivacySection[] = [
     title: { ru: 'Дети', en: 'Children' },
     blocks: [
       p(
-        'Сервисы Jaiora не предназначены для лиц младше 16 лет. Если вы узнали, что ребёнок передал нам свои данные, напишите нам — мы их удалим.',
+        'Сервисы Jaiora не предназначены для лиц младше 16 лет. Если вы узнали, что ребёнок передал нам свои данные, напишите нам (раздел «Контакты») — мы их удалим.',
         'Jaiora’s services are not intended for anyone under 16. If you learn that a child has given us personal data, contact us and we will delete it.',
       ),
     ],
@@ -301,10 +303,7 @@ export const PRIVACY: PrivacySection[] = [
     id: 'contact',
     title: { ru: 'Контакты', en: 'Contact' },
     blocks: [
-      p(
-        `Ответственный за обработку данных: Егор Урванов. Вопросы и запросы о данных: ${PRIVACY_CONTACT}.`,
-        `Data controller: Egor Urvanov. Questions and data requests: ${PRIVACY_CONTACT}.`,
-      ),
+      { kind: 'contact' },
     ],
   },
 ]
