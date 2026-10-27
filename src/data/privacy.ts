@@ -94,12 +94,12 @@ export const PRIVACY: PrivacySection[] = [
     title: { ru: 'Хранение и ваши права', en: 'Retention and your rights' },
     blocks: [
       p(
-        'Мы храним данные, пока они нужны, или пока вы не попросите их удалить. Вы можете в любой момент узнать, какие данные о вас есть у сервисов Jaiora, попросить исправить или удалить их, отказаться от их использования или отозвать согласие.',
-        'We keep data while it is needed or until you ask us to delete it. At any time you may ask what data Jaiora services hold about you, ask us to correct or delete it, object to its use or withdraw your consent.',
+        'Мы храним данные, пока они нужны, или пока вы не попросите их удалить. Вы можете в любой момент узнать, какие данные о вас есть у сервисов Jaiora, попросить исправить или удалить их, ограничить их использование, получить их копию, отказаться от их использования или отозвать согласие.',
+        'We keep data while it is needed or until you ask us to delete it. At any time you may ask what data Jaiora services hold about you, ask us to correct or delete it, restrict its use, get a copy of it, object to its use or withdraw your consent.',
       ),
       p(
-        `Напишите в Telegram @${PRIVACY_TELEGRAM}. Мы ответим в разумный срок.`,
-        `Message @${PRIVACY_TELEGRAM} on Telegram. We will reply within a reasonable time.`,
+        `Для любого из этих запросов напишите в личные сообщения в Telegram @${PRIVACY_TELEGRAM}. Мы ответим в течение 30 дней.`,
+        `For any of these requests, send a direct message to @${PRIVACY_TELEGRAM} on Telegram. We will reply within 30 days.`,
       ),
     ],
   },
