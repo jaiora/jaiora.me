@@ -57,6 +57,10 @@ export const PRIVACY: PrivacySection[] = [
         'Мы используем эти данные, чтобы сообщество и его сервисы работали, развивались и были защищены. Мы делаем это с вашего согласия, чтобы выполнить то, о чём вы просите, в разумных интересах сообщества или когда этого требует закон.',
         'We use this data to run, improve and protect the community and its services. We do so with your consent, to do what you ask of us, in the reasonable interests of the community, or where required by law.',
       ),
+      p(
+        'Ключи и пароли, которые вы вводите в сервисах Jaiora, хранятся защищённо и не показываются другим людям. Снимки экрана и другие вложения уходят нам, только когда вы сами их отправили.',
+        'Keys and passwords you enter in Jaiora services are stored securely and are not shown to other people. Screenshots and other attachments reach us only when you send them yourself.',
+      ),
     ],
   },
   {
