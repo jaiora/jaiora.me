@@ -64,8 +64,8 @@ export const PRIVACY: PrivacySection[] = [
     title: { ru: 'Знакомства', en: 'Introductions' },
     blocks: [
       p(
-        'Jaiora помогает людям находить друг друга. Для этого сервисы Jaiora могут учитывать то, что участники пишут о себе и публикуют в сообществах, — например, чем человек занимается и что ищет. Если вы не хотите, чтобы ваши сообщения учитывались, напишите нам — мы исключим вас и удалим собранное.',
-        'Jaiora helps people find each other. To do this, Jaiora services may take into account what members write about themselves and publish in the communities — for example, what a person does and what they are looking for. If you do not want your messages to be taken into account, contact us and we will exclude you and delete what has been collected.',
+        'Jaiora помогает людям находить друг друга. Для этого сервисы Jaiora могут учитывать то, что участники пишут о себе в сообществах и в переписке с нами, а также то, что они сами публикуют в открытом доступе, — например, чем человек занимается и что ищет. Если вы не хотите, чтобы ваши сообщения учитывались, напишите нам — мы исключим вас и удалим собранное.',
+        'Jaiora helps people find each other. To do this, Jaiora services may take into account what members write about themselves in the communities and in conversations with us, as well as what they publish openly themselves — for example, what a person does and what they are looking for. If you do not want your messages to be taken into account, contact us and we will exclude you and delete what has been collected.',
       ),
     ],
   },
