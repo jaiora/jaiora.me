@@ -10,7 +10,6 @@ const T = {
   service: { ru: 'Сервис', en: 'Service' },
   role: { ru: 'Для чего', en: 'Used for' },
   data: { ru: 'Какие данные', en: 'Data' },
-  where: { ru: 'Где', en: 'Location' },
   controller: { ru: 'Ответственный за обработку данных: Егор Урванов.', en: 'Data controller: Egor Urvanov.' },
   write: { ru: 'Вопросы и запросы о данных — в Telegram', en: 'Questions and data requests — on Telegram' },
 }
@@ -39,8 +38,8 @@ function Block({ b }: { b: PrivacyBlock }) {
   return (
     <div className="s-table-wrap">
       <table className="s-table">
-        <thead><tr><th>{t(T.service)}</th><th>{t(T.role)}</th><th>{t(T.data)}</th><th>{t(T.where)}</th></tr></thead>
-        <tbody>{PROCESSORS.map((p) => <tr key={p.name}><td>{p.name}</td><td>{t(p.role)}</td><td>{t(p.data)}</td><td>{t(p.where)}</td></tr>)}</tbody>
+        <thead><tr><th>{t(T.service)}</th><th>{t(T.role)}</th><th>{t(T.data)}</th></tr></thead>
+        <tbody>{PROCESSORS.map((p) => <tr key={p.name}><td>{p.name}</td><td>{t(p.role)}</td><td>{t(p.data)}</td></tr>)}</tbody>
       </table>
     </div>
   )

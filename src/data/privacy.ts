@@ -59,7 +59,6 @@ export interface Processor {
   name: string
   role: L
   data: L
-  where: L
 }
 
 export const PROCESSORS: Processor[] = [
@@ -67,49 +66,41 @@ export const PROCESSORS: Processor[] = [
     name: 'DigitalOcean',
     role: { ru: 'Серверы, базы данных и хранение файлов', en: 'Servers, databases and file storage' },
     data: { ru: 'Все данные, которые хранят сервисы Jaiora', en: 'All data stored by Jaiora’s services' },
-    where: { ru: 'США', en: 'United States' },
   },
   {
     name: 'Cloudflare',
     role: { ru: 'Защита и доставка трафика сайтов Jaiora', en: 'Protection and delivery of traffic to Jaiora sites' },
     data: { ru: 'IP-адрес, сведения о браузере, содержимое запросов к сайтам', en: 'IP address, browser details, contents of requests to the sites' },
-    where: { ru: 'Глобальная сеть, США', en: 'Global network, United States' },
   },
   {
     name: 'OpenAI',
     role: { ru: 'Искусственный интеллект: ответы на вопросы, расшифровка голоса, разбор сообщений об ошибках и чатов, профили участников, подбор людей, голосовые собеседования', en: 'Artificial intelligence: answering questions, voice transcription, analysing bug reports and chats, member profiles, matching people, voice interviews' },
     data: { ru: 'Текст вопросов и сообщений, сообщения в чатах, голос (в том числе на собеседованиях), резюме и сведения о профессиональном опыте', en: 'Text of questions and messages, chat messages, voice (including interviews), CVs and professional background' },
-    where: { ru: 'США', en: 'United States' },
   },
   {
     name: 'Anthropic',
     role: { ru: 'Искусственный интеллект: подбор людей и помощь в найме', en: 'Artificial intelligence: matching people and hiring support' },
     data: { ru: 'Описания задач и вакансий, сведения о кандидатах, тексты собеседований', en: 'Task and job descriptions, candidate details, interview transcripts' },
-    where: { ru: 'США', en: 'United States' },
   },
   {
     name: 'Telegram',
     role: { ru: 'Чаты, боты, вход в сервисы, платежи внутри Telegram', en: 'Chats, bots, sign-in, in-app payments' },
     data: { ru: 'Сообщения, идентификатор и имя пользователя в Telegram, файлы, сведения о платежах', en: 'Messages, Telegram ID and username, files, payment records' },
-    where: { ru: 'ОАЭ и другие страны', en: 'UAE and other countries' },
   },
   {
     name: 'Google',
     role: { ru: 'Прямые трансляции докладов (YouTube), вход через Google, календарь и видеовстречи для собеседований, шрифты сайта', en: 'Live streaming of talks (YouTube), sign-in with Google, calendar and video calls for interviews, website fonts' },
     data: { ru: 'Видео и звук доклада (в трансляции — публично), адрес почты и имя, события календаря, IP-адрес', en: 'Talk video and audio (public when streamed), email address and name, calendar events, IP address' },
-    where: { ru: 'США', en: 'United States' },
   },
   {
     name: 'GitHub',
     role: { ru: 'Размещение сайта Jaiora', en: 'Hosting of the Jaiora website' },
     data: { ru: 'IP-адрес и сведения о браузере посетителей', en: 'Visitors’ IP address and browser details' },
-    where: { ru: 'США', en: 'United States' },
   },
   {
     name: 'Sentry',
     role: { ru: 'Учёт технических ошибок сервиса подбора', en: 'Error tracking for the matching service' },
     data: { ru: 'Технические сведения об ошибке; личные данные перед отправкой удаляются', en: 'Technical error details; personal data is removed before sending' },
-    where: { ru: 'США', en: 'United States' },
   },
 ]
 
@@ -205,8 +196,8 @@ export const PRIVACY: PrivacySection[] = [
     title: { ru: 'Передача данных в другие страны', en: 'International transfers' },
     blocks: [
       p(
-        'Участники Jaiora живут в разных странах, а часть поставщиков находится за пределами вашей страны, в том числе в США. При передаче данных из Европейского союза, Великобритании и Швейцарии мы опираемся на решение Европейской комиссии о достаточности защиты для поставщиков, участвующих в Рамочной программе ЕС–США о защите данных, либо на стандартные договорные условия, утверждённые Европейской комиссией. Для других стран применяются равнозначные меры защиты, предусмотренные их законами.',
-        'Jaiora members live in many countries, and some providers are located outside your country, including in the United States. For transfers from the European Union, the United Kingdom and Switzerland we rely on the European Commission’s adequacy decision for providers certified under the EU–U.S. Data Privacy Framework, or on Standard Contractual Clauses approved by the European Commission. For other countries we apply equivalent safeguards required by their laws.',
+        'Участники Jaiora живут в разных странах, а поставщики, перечисленные выше, могут обрабатывать данные за пределами вашей страны. При такой передаче мы применяем меры защиты, которые требует применимое законодательство, в том числе договорные условия о защите данных с поставщиками.',
+        'Jaiora members live in many countries, and the providers listed above may process data outside your country. For such transfers we apply the safeguards required by applicable law, including data protection terms in our agreements with providers.',
       ),
     ],
   },
@@ -246,22 +237,12 @@ export const PRIVACY: PrivacySection[] = [
     ],
   },
   {
-    id: 'us',
-    title: { ru: 'Для жителей США', en: 'For U.S. residents' },
-    blocks: [
-      p(
-        'Мы не продаём персональные данные и не передаём их для поведенческой рекламы — рекламы в сообществах Jaiora нет вообще. Жители Калифорнии и других штатов с законами о защите данных имеют права, описанные в разделе «Ваши права». Сайт jaiora.me не отслеживает посетителей, поэтому сигнал браузера «Не отслеживать» (Do Not Track) не меняет его работу.',
-        'We do not sell personal information or share it for cross-context behavioural advertising — there is no advertising in Jaiora communities at all. Residents of California and other states with privacy laws have the rights described in “Your rights”. The jaiora.me website does not track visitors, so a browser “Do Not Track” signal does not change how it works.',
-      ),
-    ],
-  },
-  {
     id: 'site',
     title: { ru: 'Сайт и файлы cookie', en: 'Website and cookies' },
     blocks: [
       p(
-        'Сайт jaiora.me не использует файлы cookie, счётчики посещений и рекламные метки. Сайт размещён на GitHub Pages, шрифты загружаются из Google Fonts: при открытии страницы эти сервисы получают ваш IP-адрес и сведения о браузере, как при любом обращении к сайту. Если что-то из этого изменится, мы заранее обновим эту политику и, где это требуется, спросим ваше согласие.',
-        'The jaiora.me website does not use cookies, visitor analytics or advertising tags. The site is hosted on GitHub Pages and its fonts are loaded from Google Fonts: when you open a page, these services receive your IP address and browser details, as with any website request. If any of this changes, we will update this policy first and ask for your consent where required.',
+        'Сайт jaiora.me не использует файлы cookie, счётчики посещений и рекламные метки. Сайт размещён на GitHub Pages, шрифты загружаются из Google Fonts: при открытии страницы эти сервисы получают ваш IP-адрес и сведения о браузере, как при любом обращении к сайту. Сайт не отслеживает посетителей, поэтому сигнал браузера «Не отслеживать» (Do Not Track) не меняет его работу. Если что-то из этого изменится, мы заранее обновим эту политику и, где это требуется, спросим ваше согласие.',
+        'The jaiora.me website does not use cookies, visitor analytics or advertising tags. The site is hosted on GitHub Pages and its fonts are loaded from Google Fonts: when you open a page, these services receive your IP address and browser details, as with any website request. The site does not track visitors, so a browser “Do Not Track” signal does not change how it works. If any of this changes, we will update this policy first and ask for your consent where required.',
       ),
     ],
   },
