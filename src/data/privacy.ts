@@ -60,6 +60,16 @@ export const PRIVACY: PrivacySection[] = [
     ],
   },
   {
+    id: 'meetups',
+    title: { ru: 'Встречи и записи', en: 'Meetups and recordings' },
+    blocks: [
+      p(
+        'Доклады на встречах Jaiora могут записываться и транслироваться. Запись экрана и звука начинается только по действию докладчика и идёт только во время доклада; участники могут снимать доклад на свои телефоны. Публикует записи организатор встречи. Чтобы не попасть в публикацию или удалить запись, напишите нам.',
+        'Talks at Jaiora meetups may be recorded and streamed. Screen and audio recording starts only when the speaker starts it and runs only during the talk; attendees may film the talk on their phones. Recordings are published by the meetup organiser. To stay out of a published recording or have it removed, contact us.',
+      ),
+    ],
+  },
+  {
     id: 'providers',
     title: { ru: 'Сторонние поставщики и искусственный интеллект', en: 'Third-party providers and artificial intelligence' },
     blocks: [
