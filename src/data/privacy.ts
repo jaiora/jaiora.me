@@ -19,7 +19,6 @@ export interface PrivacySection {
 }
 
 const p = (ru: string, en: string): PrivacyBlock => ({ kind: 'p', text: { ru, en } })
-const list = (...items: [string, string][]): PrivacyBlock => ({ kind: 'list', items: items.map(([ru, en]) => ({ ru, en })) })
 
 export const PRIVACY: PrivacySection[] = [
   {
@@ -27,68 +26,53 @@ export const PRIVACY: PrivacySection[] = [
     title: { ru: 'Кто мы и что покрывает политика', en: 'Who we are and what this policy covers' },
     blocks: [
       p(
-        'Jaiora — открытое сообщество чатов и встреч в разных городах. Настоящая политика описывает, какие данные о людях обрабатывают сервисы Jaiora, зачем, кому они передаются, как долго хранятся и как реализовать свои права.',
-        'Jaiora is an open community of chats and meetups in many cities. This policy explains what personal data Jaiora’s services process, why, who receives it, how long it is kept and how you can exercise your rights.',
+        'Jaiora — открытое сообщество чатов и встреч в разных городах. Политика распространяется на сайт и сообщества Jaiora, а также на сервисы, инструменты и приложения Jaiora, которые ссылаются на эту политику.',
+        'Jaiora is an open community of chats and meetups in many cities. This policy applies to the Jaiora website and communities and to Jaiora services, tools and applications that link to this policy.',
       ),
       p(
-        'Политика распространяется на сайт и сообщества Jaiora, а также на все сервисы, инструменты и приложения Jaiora — сайты, ботов, расширения для браузера и другие, — которые ссылаются на эту политику.',
-        'This policy applies to the Jaiora website and communities and to all Jaiora services, tools and applications — websites, bots, browser extensions and others — that link to this policy.',
+        'Jaiora не является юридическим лицом. Ответственный указан в разделе «Контакты».',
+        'Jaiora is not a legal entity. The responsible person is named in the “Contact” section.',
       ),
+    ],
+  },
+  {
+    id: 'telegram',
+    title: { ru: 'Общение в Telegram', en: 'Communication on Telegram' },
+    blocks: [
       p(
-        'Jaiora не является юридическим лицом. Ответственный за обработку данных указан в разделе «Контакты».',
-        'Jaiora is not a legal entity. The person responsible for data processing is named in the “Contact” section.',
+        'Сообщества Jaiora живут в Telegram: там проходят общение участников, анонсы встреч и работа ботов. Данные, которыми вы обмениваетесь в Telegram, обрабатывает Telegram в соответствии со своей политикой конфиденциальности и условиями использования. Jaiora не определяет, как Telegram хранит и использует эти данные.',
+        'Jaiora communities live on Telegram: member conversations, meetup announcements and bots all happen there. Data you exchange on Telegram is processed by Telegram under its own privacy policy and terms of service. Jaiora does not control how Telegram stores and uses that data.',
       ),
     ],
   },
   {
     id: 'data',
-    title: { ru: 'Какие данные мы обрабатываем', en: 'What data we process' },
+    title: { ru: 'Данные в сервисах Jaiora', en: 'Data in Jaiora services' },
     blocks: [
-      p('В зависимости от того, какими сервисами вы пользуетесь, мы можем обрабатывать:', 'Depending on which services you use, we may process:'),
-      list(
-        ['данные, которые вы сообщаете сами: имя, контакты, сведения о себе и своём опыте;', 'data you provide yourself: your name, contact details and information about yourself and your experience;'],
-        ['данные, которые возникают при пользовании сервисами: сообщения, материалы встреч, обращения в поддержку;', 'data generated when you use the services: messages, meetup materials and support requests;'],
-        ['сведения из общедоступных источников, в том числе из открытых чатов сообщества;', 'information from publicly available sources, including open community chats;'],
-        ['технические данные: IP-адрес, сведения о браузере и устройстве, журналы работы сервисов.', 'technical data: IP address, browser and device details and service logs.'],
+      p(
+        'В той мере, в какой сервисы Jaiora сами работают с данными, это сведения, которые участники сообщают о себе или публикуют в сообществах, материалы встреч, обращения к нам и технические данные, необходимые для работы сервисов.',
+        'To the extent Jaiora services handle data themselves, this is information members share about themselves or publish in the communities, meetup materials, messages sent to us and technical data needed to run the services.',
       ),
       p(
-        'Мы не собираем намеренно данные особых категорий (о здоровье, убеждениях и т. п.).',
-        'We do not intentionally collect special categories of data (such as health or beliefs).',
+        'Мы используем эти данные, чтобы сообщество и его сервисы работали, развивались и были защищены, а также когда этого требует закон.',
+        'We use this data to run, improve and protect the community and its services, and where required by law.',
       ),
     ],
   },
   {
-    id: 'purposes',
-    title: { ru: 'Зачем мы обрабатываем данные', en: 'Why we process data' },
+    id: 'providers',
+    title: { ru: 'Сторонние поставщики и искусственный интеллект', en: 'Third-party providers and artificial intelligence' },
     blocks: [
       p(
-        'Мы обрабатываем данные, чтобы сервисы Jaiora работали: для общения в сообществе, проведения встреч, знакомств и подбора людей, поддержки пользователей, развития и защиты сервисов, а также для исполнения требований закона. Основанием служат ваше согласие, договорённость с вами, наш законный интерес в работе сообщества или требование закона.',
-        'We process data so that Jaiora’s services work: for community communication, running meetups, introductions and matching people, supporting users, improving and protecting the services, and complying with the law. The basis is your consent, an arrangement with you, our legitimate interest in running the community, or a legal requirement.',
+        'Для работы сервисов мы пользуемся услугами надёжных и широко распространённых сторонних поставщиков, в том числе технологий искусственного интеллекта. Им передаётся только то, что нужно для их работы, и они обязаны защищать данные. Данные могут обрабатываться за пределами вашей страны с мерами защиты, которых требует применимое законодательство.',
+        'To run the services we use reliable, widely used third-party providers, including artificial intelligence technologies. They receive only what they need to do their job and are required to protect the data. Data may be processed outside your country with the safeguards required by applicable law.',
       ),
     ],
   },
   {
-    id: 'ai',
-    title: { ru: 'Искусственный интеллект', en: 'Artificial intelligence' },
+    id: 'no-ads',
+    title: { ru: 'Без рекламы', en: 'No advertising' },
     blocks: [
-      p(
-        'Некоторые функции сервисов работают с помощью технологий искусственного интеллекта сторонних поставщиков. Таким поставщикам передаются только данные, нужные для работы конкретной функции, и они обрабатывают их по нашему поручению.',
-        'Some features of the services use artificial intelligence technologies from third-party providers. Such providers receive only the data a given feature needs and process it on our behalf.',
-      ),
-    ],
-  },
-  {
-    id: 'recipients',
-    title: { ru: 'Кому передаются данные', en: 'Who receives your data' },
-    blocks: [
-      p(
-        'Для работы сервисов мы пользуемся услугами надёжных и широко распространённых сторонних поставщиков — технической инфраструктуры, связи, искусственного интеллекта и других. Поставщики обрабатывают данные для оказания нам услуг и обязаны их защищать.',
-        'To run the services we use reliable, widely used third-party providers — of technical infrastructure, communications, artificial intelligence and others. Providers process data to deliver their services to us and are required to protect it.',
-      ),
-      p(
-        'Кроме того, данные могут быть переданы организаторам встреч и другим участникам — в объёме, нужном для встреч и знакомств, — а также государственным органам, когда этого требует закон.',
-        'Data may also be shared with meetup organisers and other members, to the extent needed for meetups and introductions, and with public authorities where required by law.',
-      ),
       p(
         'В сообществах Jaiora нет рекламы и спонсорских размещений, и это принцип: сообщество не продаётся — ни доступ к участникам, ни их внимание, ни их данные. Мы не продаём данные и не передаём их для рекламы.',
         'There is no advertising or sponsored content in Jaiora communities, and this is a principle: the community is not for sale — not access to its members, not their attention, not their data. We do not sell personal data or share it for advertising.',
@@ -96,90 +80,42 @@ export const PRIVACY: PrivacySection[] = [
     ],
   },
   {
-    id: 'transfers',
-    title: { ru: 'Передача данных в другие страны', en: 'International transfers' },
-    blocks: [
-      p(
-        'Участники Jaiora живут в разных странах, и данные могут обрабатываться за пределами вашей страны. В этом случае мы применяем меры защиты, которые требует применимое законодательство.',
-        'Jaiora members live in many countries, and data may be processed outside your country. In that case we apply the safeguards required by applicable law.',
-      ),
-    ],
-  },
-  {
-    id: 'retention',
-    title: { ru: 'Сроки хранения', en: 'Retention' },
-    blocks: [
-      p(
-        'Мы храним данные, пока они нужны для целей, ради которых получены, или пока вы не попросите их удалить, если закон не требует хранить их дольше.',
-        'We keep data as long as it is needed for the purposes it was collected for, or until you ask us to delete it, unless the law requires us to keep it longer.',
-      ),
-    ],
-  },
-  {
     id: 'rights',
-    title: { ru: 'Ваши права', en: 'Your rights' },
+    title: { ru: 'Хранение и ваши права', en: 'Retention and your rights' },
     blocks: [
-      p('Вы вправе в любой момент:', 'At any time you may:'),
-      list(
-        ['узнать, какие данные о вас мы обрабатываем, и получить их копию;', 'find out what data we hold about you and get a copy;'],
-        ['исправить неточные данные;', 'correct inaccurate data;'],
-        ['потребовать удаления данных;', 'ask us to delete your data;'],
-        ['ограничить обработку или возразить против неё, в том числе против подбора людей;', 'restrict or object to processing, including matching;'],
-        ['получить данные в машиночитаемом виде для передачи другому сервису;', 'receive your data in a machine-readable format to move it elsewhere;'],
-        ['отозвать согласие — это не влияет на обработку до отзыва;', 'withdraw consent — this does not affect processing before withdrawal;'],
-                ['подать жалобу в орган по защите данных своей страны.', 'lodge a complaint with the data protection authority of your country.'],
+      p(
+        'Мы храним данные, пока они нужны, или пока вы не попросите их удалить. Вы можете в любой момент узнать, какие данные о вас есть у сервисов Jaiora, попросить исправить или удалить их, отказаться от их использования или отозвать согласие.',
+        'We keep data while it is needed or until you ask us to delete it. At any time you may ask what data Jaiora services hold about you, ask us to correct or delete it, object to its use or withdraw your consent.',
       ),
       p(
-        `Напишите в Telegram @${PRIVACY_TELEGRAM}. Мы ответим в течение 30 дней. Мы не ухудшаем условия для тех, кто воспользовался своими правами.`,
-        `Message @${PRIVACY_TELEGRAM} on Telegram. We will reply within 30 days. We do not treat anyone less favourably for exercising their rights.`,
+        `Напишите в Telegram @${PRIVACY_TELEGRAM}. Мы ответим в разумный срок.`,
+        `Message @${PRIVACY_TELEGRAM} on Telegram. We will reply within a reasonable time.`,
       ),
     ],
   },
   {
     id: 'site',
-    title: { ru: 'Сайт и файлы cookie', en: 'Website and cookies' },
+    title: { ru: 'Сайт', en: 'Website' },
     blocks: [
       p(
-        'Сайт Jaiora не использует файлы cookie, счётчики посещений и рекламные метки и не отслеживает посетителей, поэтому сигнал браузера «Не отслеживать» (Do Not Track) не меняет его работу. Как и при любом обращении к сайту, ваш IP-адрес и сведения о браузере получают сервисы, обеспечивающие его работу. Если что-то из этого изменится, мы заранее обновим эту политику и, где это требуется, спросим ваше согласие.',
-        'The Jaiora website does not use cookies, visitor analytics or advertising tags and does not track visitors, so a browser “Do Not Track” signal does not change how it works. As with any website request, your IP address and browser details are received by the services that keep the site running. If any of this changes, we will update this policy first and ask for your consent where required.',
+        'Сайт Jaiora не использует файлы cookie, счётчики посещений и рекламные метки.',
+        'The Jaiora website does not use cookies, visitor analytics or advertising tags.',
       ),
     ],
   },
   {
-    id: 'children',
-    title: { ru: 'Дети', en: 'Children' },
+    id: 'other',
+    title: { ru: 'Прочее', en: 'Other' },
     blocks: [
       p(
-        'Сервисы Jaiora не предназначены для лиц младше 16 лет. Если вы узнали, что ребёнок передал нам свои данные, напишите нам (раздел «Контакты») — мы их удалим.',
-        'Jaiora’s services are not intended for anyone under 16. If you learn that a child has given us personal data, contact us and we will delete it.',
-      ),
-    ],
-  },
-  {
-    id: 'security',
-    title: { ru: 'Безопасность', en: 'Security' },
-    blocks: [
-      p(
-        'Мы принимаем разумные меры, чтобы защитить данные от несанкционированного доступа, изменения и утраты.',
-        'We take reasonable measures to protect data against unauthorised access, alteration and loss.',
-      ),
-    ],
-  },
-  {
-    id: 'changes',
-    title: { ru: 'Изменения политики', en: 'Changes to this policy' },
-    blocks: [
-      p(
-        'Мы обновляем эту страницу, когда меняются сервисы или поставщики, и указываем дату редакции вверху. О существенных изменениях сообщаем заметно на сайте или в сообществах Jaiora.',
-        'We update this page when our services or providers change and show the date at the top. We announce significant changes prominently on the website or in Jaiora communities.',
+        'Сервисы Jaiora не предназначены для лиц младше 16 лет. Мы принимаем разумные меры для защиты данных. Политика может обновляться; дата редакции указана вверху страницы.',
+        'Jaiora services are not intended for anyone under 16. We take reasonable measures to protect data. This policy may be updated; the date is shown at the top of the page.',
       ),
     ],
   },
   {
     id: 'contact',
     title: { ru: 'Контакты', en: 'Contact' },
-    blocks: [
-      { kind: 'contact' },
-    ],
+    blocks: [{ kind: 'contact' }],
   },
 ]

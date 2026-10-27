@@ -5,8 +5,8 @@ import { useT } from '@/lib/i18n'
 const T = {
   title: { ru: 'Политика конфиденциальности', en: 'Privacy Policy' },
   updated: { ru: 'Редакция от', en: 'Last updated' },
-  controller: { ru: 'Ответственный за обработку данных: Егор Урванов.', en: 'Data controller: Egor Urvanov.' },
-  write: { ru: 'Вопросы и запросы о данных — в Telegram', en: 'Questions and data requests — on Telegram' },
+  controller: { ru: 'Ответственный: Егор Урванов.', en: 'Responsible person: Egor Urvanov.' },
+  write: { ru: 'Вопросы — в Telegram', en: 'Questions — on Telegram' },
 }
 
 function Block({ b }: { b: PrivacyBlock }) {
