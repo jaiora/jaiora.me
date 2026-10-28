@@ -5,8 +5,9 @@ import { useT } from '@/lib/i18n'
 const T = {
   title: { ru: 'Политика конфиденциальности', en: 'Privacy Policy' },
   updated: { ru: 'Редакция от', en: 'Last updated' },
-  controller: { ru: 'Ответственный: Егор Урванов.', en: 'Responsible person: Egor Urvanov.' },
-  write: { ru: 'Вопросы — в Telegram', en: 'Questions — on Telegram' },
+  controller: { ru: 'Вопросы о данных и правах — Егор Урванов:', en: 'Questions about data and rights — Egor Urvanov:' },
+  write: { ru: 'Telegram', en: 'Telegram' },
+  help: { ru: 'Примет обращение и поможет найти нужного человека.', en: 'He will take your request and help find the right person.' },
 }
 
 function Block({ b }: { b: PrivacyBlock }) {
@@ -15,7 +16,7 @@ function Block({ b }: { b: PrivacyBlock }) {
   if (b.kind === 'contact') {
     return (
       <p>
-        {t(T.controller)} {t(T.write)} @{PRIVACY_TELEGRAM}.
+        {t(T.controller)} {t(T.write)} @{PRIVACY_TELEGRAM}. {t(T.help)}
       </p>
     )
   }

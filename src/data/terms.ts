@@ -20,8 +20,8 @@ export const TERMS: TermsSection[] = [
     title: p('Об условиях', 'About these terms'),
     paras: [
       p(
-        'Пользуясь сайтом, сообществами и сервисами Jaiora, вы соглашаетесь с этими условиями. Как мы обращаемся с данными, описано в политике конфиденциальности. Jaiora не является юридическим лицом; ответственный указан в разделе «Контакты».',
-        'By using the Jaiora website, communities and services you agree to these terms. How we handle data is described in the privacy policy. Jaiora is not a legal entity; the responsible person is named in the “Contact” section.',
+        'Пользуясь сайтом, сообществами и сервисами Jaiora, вы соглашаетесь с этими условиями. Как обращаются с данными, описано в политике конфиденциальности. Jaiora — сообщество участников, а не организация или юридическое лицо: всё в нём делают сами участники. С вопросами помогает Егор Урванов — см. «Контакты».',
+        'By using the Jaiora website, communities and services you agree to these terms. How data is handled is described in the privacy policy. Jaiora is a community of members, not an organisation or a legal entity: everything in it is done by the members themselves. Egor Urvanov helps with questions — see “Contact”.',
       ),
     ],
   },
@@ -30,8 +30,8 @@ export const TERMS: TermsSection[] = [
     title: p('Сообщество', 'Community'),
     paras: [
       p(
-        'Jaiora держится на доверии и живых людях. Мы поддерживаем уважение, честность и взаимопомощь и просим относиться к другим так, как вы хотите, чтобы относились к вам. За спам, обман, оскорбления и нарушения закона сообщения могут удаляться, а участие — ограничиваться.',
-        'Jaiora is built on trust and real people. We encourage respect, honesty and helping each other, and ask you to treat others the way you want to be treated. Spam, deception, abuse and unlawful content may be removed and participation may be restricted.',
+        'Jaiora держится на доверии и живых людях. Участники поддерживают уважение, честность и взаимопомощь и относятся к другим так, как хотят, чтобы относились к ним. За спам, обман, оскорбления и нарушения закона сообщения могут удаляться, а участие — ограничиваться.',
+        'Jaiora is built on trust and real people. Members uphold respect, honesty and helping each other, and treat others the way they want to be treated. Spam, deception, abuse and unlawful content may be removed and participation may be restricted.',
       ),
     ],
   },
@@ -40,12 +40,12 @@ export const TERMS: TermsSection[] = [
     title: p('Знакомства и встречи', 'Introductions and meetups'),
     paras: [
       p(
-        'Мы помогаем людям находить друг друга и встречаться вживую и стараемся, чтобы среда была доброжелательной и безопасной. При этом мы не проверяем участников и не отвечаем за их слова, поступки и договорённости между ними: знакомства, встречи и совместные дела — на ваше усмотрение и под вашу ответственность.',
-        'We help people find each other and meet in person, and we work to keep the community friendly and safe. However, we do not vet members and are not responsible for their words, actions or arrangements between them: introductions, meetups and joint projects are at your own discretion and risk.',
+        'Участники помогают друг другу находить нужных людей и встречаться вживую и стараются, чтобы среда была доброжелательной и безопасной. При этом никто не проверяет участников и не отвечает за их слова, поступки и договорённости между ними: знакомства, встречи и совместные дела — на ваше усмотрение и под вашу ответственность.',
+        'Members help each other find the right people and meet in person, and work to keep the community friendly and safe. However, no one vets members or is responsible for their words, actions or arrangements between them: introductions, meetups and joint projects are at your own discretion and risk.',
       ),
       p(
-        'Встречи сообщества носят общественный характер: участники сами договариваются о месте, времени и формате и сами отвечают за своё участие. Встречайтесь в общественных местах, не передавайте деньги и документы малознакомым людям и сообщайте нам о нарушениях — мы разберёмся.',
-        'Community meetups are public, informal gatherings: participants agree among themselves on the place, time and format and are responsible for their own participation. Meet in public places, do not hand money or documents to people you barely know, and report problems to us — we will look into them.',
+        'Встречи сообщества носят общественный характер: участники сами договариваются о месте, времени и формате и сами отвечают за своё участие. Встречайтесь в общественных местах, не передавайте деньги и документы малознакомым людям а о нарушениях пишите Егору Урванову — он поможет разобраться.',
+        'Community meetups are public, informal gatherings: participants agree among themselves on the place, time and format and are responsible for their own participation. Meet in public places, do not hand money or documents to people you barely know, and report problems to Egor Urvanov — he will help sort them out.',
       ),
     ],
   },
@@ -64,8 +64,8 @@ export const TERMS: TermsSection[] = [
     title: p('Искусственный интеллект', 'Artificial intelligence'),
     paras: [
       p(
-        'Некоторые ответы и подсказки в сервисах Jaiora создаются с помощью искусственного интеллекта и могут быть неточными. Проверяйте важное самостоятельно; мы не отвечаем за решения, принятые на их основе.',
-        'Some answers and suggestions in Jaiora services are generated by artificial intelligence and may be inaccurate. Check anything important yourself; we are not responsible for decisions made based on them.',
+        'Некоторые ответы и подсказки в сервисах Jaiora создаются с помощью искусственного интеллекта и могут быть неточными. Проверяйте важное самостоятельно: решения, принятые на их основе, — под вашу ответственность.',
+        'Some answers and suggestions in Jaiora services are generated by artificial intelligence and may be inaccurate. Check anything important yourself: decisions based on them are your own responsibility.',
       ),
     ],
   },
@@ -74,8 +74,8 @@ export const TERMS: TermsSection[] = [
     title: p('Сторонние сервисы', 'Third-party services'),
     paras: [
       p(
-        'Сообщества и сервисы Jaiora работают на платформах и с помощью сторонних поставщиков, которые действуют по своим правилам. За их работу мы не отвечаем.',
-        'Jaiora communities and services run on platforms and with third-party providers that operate under their own rules. We are not responsible for how they work.',
+        'Сообщества и сервисы Jaiora работают на платформах и с помощью сторонних поставщиков, которые действуют по своим правилам и сами отвечают за свою работу.',
+        'Jaiora communities and services run on platforms and with third-party providers that operate under their own rules and are responsible for their own work.',
       ),
     ],
   },
@@ -84,8 +84,8 @@ export const TERMS: TermsSection[] = [
     title: p('Без гарантий', 'No warranties'),
     paras: [
       p(
-        'Сайт, сообщества и сервисы Jaiora предоставляются бесплатно и «как есть». Мы можем менять их или прекращать работу и не отвечаем за перерывы, потерю данных и косвенный ущерб — в пределах, допустимых законом. Ничто в этих условиях не ограничивает права, которые закон не позволяет ограничить.',
-        'The Jaiora website, communities and services are provided free of charge and “as is”. We may change or discontinue them and are not liable for interruptions, loss of data or indirect damage, to the extent permitted by law. Nothing in these terms limits rights that cannot be limited by law.',
+        'Сайт, сообщества и сервисы Jaiora поддерживаются участниками бесплатно и «как есть»: они могут меняться или прекращать работу, и ответственность за перерывы, потерю данных и косвенный ущерб не предусмотрена — в пределах, допустимых законом. Ничто в этих условиях не ограничивает права, которые закон не позволяет ограничить.',
+        'The Jaiora website, communities and services are maintained by members free of charge and “as is”: they may change or stop, and there is no liability for interruptions, loss of data or indirect damage, to the extent permitted by law. Nothing in these terms limits rights that cannot be limited by law.',
       ),
     ],
   },
@@ -104,8 +104,8 @@ export const TERMS: TermsSection[] = [
     title: p('Контакты', 'Contact'),
     paras: [
       p(
-        `Ответственный: Егор Урванов. Вопросы и сообщения о нарушениях — в Telegram @${PRIVACY_TELEGRAM}.`,
-        `Responsible person: Egor Urvanov. Questions and reports — on Telegram @${PRIVACY_TELEGRAM}.`,
+        `Вопросы и сообщения о нарушениях — Егору Урванову в Telegram @${PRIVACY_TELEGRAM}: он примет обращение и поможет найти нужного человека.`,
+        `Questions and reports — to Egor Urvanov on Telegram @${PRIVACY_TELEGRAM}: he will take your request and help find the right person.`,
       ),
     ],
   },
