@@ -78,8 +78,8 @@ export const PRIVACY: PrivacySection[] = [
     title: { ru: 'Встречи и записи', en: 'Meetups and recordings' },
     blocks: [
       p(
-        'Доклады на встречах Jaiora могут записываться и транслироваться. Запись экрана и звука начинается только по действию докладчика и идёт только во время доклада; участники могут снимать доклад на свои телефоны. Записи публикует Jaiora. Чтобы не попасть в публикацию или удалить запись, напишите нам.',
-        'Talks at Jaiora meetups may be recorded and streamed. Screen and audio recording starts only when the speaker starts it and runs only during the talk; attendees may film the talk on their phones. Recordings are published by Jaiora. To stay out of a published recording or have it removed, contact us.',
+        'Доклады на встречах Jaiora могут записываться и транслироваться. Запись экрана и звука начинается только по действию докладчика и идёт только во время доклада; участники могут снимать доклад на свои телефоны. Записи публикуют сами участники, и за свои публикации отвечают они; Jaiora за них ответственности не несёт. Если вы не хотите попасть в запись или хотите её удалить, напишите нам — поможем связаться с автором.',
+        'Talks at Jaiora meetups may be recorded and streamed. Screen and audio recording starts only when the speaker starts it and runs only during the talk; attendees may film the talk on their phones. Recordings are published by the participants themselves, who are responsible for what they publish; Jaiora is not responsible for it. If you do not want to appear in a recording or want it removed, contact us and we will help you reach its author.',
       ),
     ],
   },

@@ -54,8 +54,8 @@ export const TERMS: TermsSection[] = [
     title: p('Ваши публикации', 'Your content'),
     paras: [
       p(
-        'За то, что вы публикуете, отвечаете вы. Не публикуйте чужие личные данные без согласия их владельца.',
-        'You are responsible for what you post. Do not post other people’s personal data without their consent.',
+        'За то, что вы публикуете — сообщения, фото, видео и записи встреч, — отвечаете вы. Не публикуйте чужие личные данные и записи с другими людьми без их согласия.',
+        'You are responsible for what you post — messages, photos, videos and meetup recordings. Do not post other people’s personal data or recordings of them without their consent.',
       ),
     ],
   },
