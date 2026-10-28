@@ -7,6 +7,7 @@ import BlogPostView from '@/components/BlogPostView'
 import TeamView from '@/components/TeamView'
 import PrivacyView from '@/components/PrivacyView'
 import TermsView from '@/components/TermsView'
+import MeetupPrivacyView from '@/components/MeetupPrivacyView'
 import NotFoundView from '@/components/NotFoundView'
 import { usePageMeta } from '@/lib/usePageMeta'
 import { useScrollToTop } from '@/lib/useScrollToTop'
@@ -23,6 +24,7 @@ export default function App() {
       <Route path="/blog/:slug" element={<BlogPostView />} />
       <Route path="/team" element={<TeamView />} />
       <Route path="/privacy" element={<PrivacyView />} />
+      <Route path="/privacy/meetup" element={<MeetupPrivacyView />} />
       <Route path="/terms" element={<TermsView />} />
       <Route path="/en" element={<JaioraLanding />} />
       <Route path="/en/locations" element={<LocationsView />} />
@@ -31,6 +33,7 @@ export default function App() {
       <Route path="/en/blog/:slug" element={<BlogPostView />} />
       <Route path="/en/team" element={<TeamView />} />
       <Route path="/en/privacy" element={<PrivacyView />} />
+      <Route path="/en/privacy/meetup" element={<MeetupPrivacyView />} />
       <Route path="/en/terms" element={<TermsView />} />
       <Route path="*" element={<NotFoundView />} />
     </Routes>

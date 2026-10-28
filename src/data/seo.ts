@@ -138,6 +138,10 @@ const STATIC_TEXT = {
     ru: { title: 'Условия использования — Jaiora', description: 'Условия использования сайта, сообществ и сервисов Jaiora: поведение, знакомства и встречи, ответственность.' },
     en: { title: 'Terms of Use — Jaiora', description: 'Terms of use for the Jaiora website, communities and services: conduct, introductions and meetups, liability.' },
   },
+  privacyMeetup: {
+    ru: { title: 'Конфиденциальность: запись докладов — Jaiora', description: 'Как сервис записи докладов и расширение «Jaiora Meetup» обращаются с данными: разрешения, поставщики, хранение.' },
+    en: { title: 'Privacy: talk recording — Jaiora', description: 'How the talk-recording service and the “Jaiora Meetup” extension handle data: permissions, providers, retention.' },
+  },
   home: {
     ru: { title: 'Jaiora — оффлайн-LinkedIn: находим человека под задачу и знакомим вживую', description: 'Jaiora — сообщество и встречи: у любой задачи и цели есть человек, который поможет. Помогаем его найти и встретиться вживую. 11 локаций, 10 000 человек.' },
     en: { title: 'Jaiora — offline LinkedIn: we find the right person and introduce you in person', description: 'Jaiora is a community and meetups: every task and goal has a person who can help. We help you find them and meet in person. 11 locations, 10,000 people.' },
@@ -273,6 +277,16 @@ export function allPages(): PageMeta[] {
       ...m,
       sources: ['src/components/PrivacyView.tsx', 'src/data/privacy.ts'],
       crumbs: [{ name: CRUMB.privacy[lang], path }],
+      jsonLd: [webPage('WebPage', path, lang, m.title, m.description)],
+    }
+  })
+
+  add('/privacy/meetup', (lang, path) => {
+    const m = STATIC_TEXT.privacyMeetup[lang]
+    return {
+      ...m,
+      sources: ['src/components/MeetupPrivacyView.tsx', 'src/data/privacyMeetup.ts'],
+      crumbs: [{ name: CRUMB.privacy[lang], path: withLang('/privacy', lang) }, { name: m.title.split(' — ')[0], path }],
       jsonLd: [webPage('WebPage', path, lang, m.title, m.description)],
     }
   })

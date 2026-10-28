@@ -30,8 +30,8 @@ export const PRIVACY: PrivacySection[] = [
         'Jaiora is an open community of chats and meetups in many cities. Meetups, recordings, posts and community services are created and maintained by the members themselves. Jaiora is not an organisation or a legal entity.',
       ),
       p(
-        'Политика описывает, как обращаются с данными на сайте, в сообществах и в сервисах Jaiora, которые ссылаются на эту политику. С вопросами помогает Егор Урванов — см. «Контакты».',
-        'This policy describes how data is handled on the website, in the communities and in Jaiora services that link to this policy. Egor Urvanov helps with questions — see “Contact”.',
+        'Политика описывает, как обращаются с данными на сайте, в сообществах и в сервисах Jaiora, которые ссылаются на эту политику. Для отдельных сервисов могут действовать дополнительные политики, которые конкретизируют эту. С вопросами помогает Егор Урванов — см. «Контакты».',
+        'This policy describes how data is handled on the website, in the communities and in Jaiora services that link to this policy. Individual services may have supplementary policies that make this one more specific. Egor Urvanov helps with questions — see “Contact”.',
       ),
     ],
   },
