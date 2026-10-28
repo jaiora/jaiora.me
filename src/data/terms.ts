@@ -44,8 +44,8 @@ export const TERMS: TermsSection[] = [
         'We help people find each other and meet in person, and we work to keep the community friendly and safe. However, we do not vet members and are not responsible for their words, actions or arrangements between them: introductions, meetups and joint projects are at your own discretion and risk.',
       ),
       p(
-        'Встречи проводят организаторы, и за встречу, её запись и публикацию отвечает организатор. Встречайтесь в общественных местах, не передавайте деньги и документы малознакомым людям и сообщайте нам о нарушениях — мы разберёмся.',
-        'Meetups are run by organisers, who are responsible for the meetup, its recording and publication. Meet in public places, do not hand money or documents to people you barely know, and report problems to us — we will look into them.',
+        'Встречи сообщества носят общественный характер: участники сами договариваются о месте, времени и формате и сами отвечают за своё участие. Встречайтесь в общественных местах, не передавайте деньги и документы малознакомым людям и сообщайте нам о нарушениях — мы разберёмся.',
+        'Community meetups are public, informal gatherings: participants agree among themselves on the place, time and format and are responsible for their own participation. Meet in public places, do not hand money or documents to people you barely know, and report problems to us — we will look into them.',
       ),
     ],
   },
