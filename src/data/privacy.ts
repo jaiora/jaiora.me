@@ -40,8 +40,8 @@ export const PRIVACY: PrivacySection[] = [
     title: { ru: 'Общение в Telegram', en: 'Communication on Telegram' },
     blocks: [
       p(
-        'Сообщества Jaiora живут в Telegram: там проходят общение участников, анонсы встреч и работа ботов. Данные, которыми вы обмениваетесь в Telegram, обрабатывает Telegram в соответствии со своей политикой конфиденциальности и условиями использования.',
-        'Jaiora communities live on Telegram: member conversations, meetup announcements and bots all happen there. Data you exchange on Telegram is processed by Telegram under its own privacy policy and terms of service.',
+        'Сообщества Jaiora живут в Telegram: там проходят общение участников, анонсы встреч и работа ботов. Данные, которыми вы обмениваетесь в Telegram, обрабатывает Telegram в соответствии со своей политикой конфиденциальности и условиями использования. То, что получают боты Jaiora, обрабатывается сервисами Jaiora по этой политике.',
+        'Jaiora communities live on Telegram: member conversations, meetup announcements and bots all happen there. Data you exchange on Telegram is processed by Telegram under its own privacy policy and terms of service. What Jaiora bots receive is processed by Jaiora services under this policy.',
       ),
     ],
   },
@@ -88,8 +88,8 @@ export const PRIVACY: PrivacySection[] = [
     title: { ru: 'Сторонние поставщики и искусственный интеллект', en: 'Third-party providers and artificial intelligence' },
     blocks: [
       p(
-        'Для работы сервисов используются услуги надёжных и широко распространённых сторонних поставщиков, в том числе технологий искусственного интеллекта. Им передаётся только то, что нужно для их работы, и они обязаны защищать данные. Данные могут обрабатываться за пределами вашей страны с мерами защиты, которых требует применимое законодательство.',
-        'The services use reliable, widely used third-party providers, including artificial intelligence technologies. They receive only what they need to do their job and are required to protect the data. Data may be processed outside your country with the safeguards required by applicable law.',
+        'Для работы сервисов используются услуги надёжных и широко распространённых сторонних поставщиков, в том числе технологий искусственного интеллекта. Им передаётся только то, что нужно для их работы, и они обязаны защищать данные. Данные могут обрабатываться за пределами вашей страны — на основе договорных условий о защите данных и других мер, которых требует применимое законодательство.',
+        'The services use reliable, widely used third-party providers, including artificial intelligence technologies. They receive only what they need to do their job and are required to protect the data. Data may be processed outside your country, based on data protection terms in agreements and other safeguards required by applicable law.',
       ),
     ],
   },
@@ -108,8 +108,8 @@ export const PRIVACY: PrivacySection[] = [
     title: { ru: 'Хранение и ваши права', en: 'Retention and your rights' },
     blocks: [
       p(
-        'Данные хранятся, пока они нужны, или пока вы не попросите их удалить. Вы можете в любой момент узнать, какие данные о вас есть в сервисах Jaiora, попросить исправить или удалить их, ограничить их использование, получить их копию, отказаться от их использования или отозвать согласие.',
-        'Data is kept while it is needed or until you ask for it to be deleted. At any time you may ask what data Jaiora services hold about you, ask for it to be corrected or deleted, restrict its use, get a copy of it, object to its use or withdraw your consent.',
+        'Данные хранятся, пока они нужны, или пока вы не попросите их удалить. Вы можете в любой момент узнать, какие данные о вас есть в сервисах Jaiora, попросить исправить или удалить их, ограничить их использование, получить их копию, отказаться от их использования или отозвать согласие, а также пожаловаться в орган по защите данных своей страны.',
+        'Data is kept while it is needed or until you ask for it to be deleted. At any time you may ask what data Jaiora services hold about you, ask for it to be corrected or deleted, restrict its use, get a copy of it, object to its use or withdraw your consent, and lodge a complaint with the data protection authority of your country.',
       ),
       p(
         `Для любого из этих запросов напишите Егору Урванову в личные сообщения в Telegram @${PRIVACY_TELEGRAM}: он примет обращение и поможет найти тех, кто может его выполнить. Ответ — в течение 30 дней.`,
